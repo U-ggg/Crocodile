@@ -19,6 +19,7 @@
 		EB2F776829E9CCC5007E87C3 /* CorrectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F776729E9CCC5007E87C3 /* CorrectViewController.swift */; };
 		EB2F776A29E9CCE8007E87C3 /* WrongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F776929E9CCE8007E87C3 /* WrongViewController.swift */; };
 		EB2F776C29E9CD2B007E87C3 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F776B29E9CD2B007E87C3 /* ResultViewController.swift */; };
+		EBAAE0B229ED0C2900F039F5 /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAAE0B129ED0C2900F039F5 /* TeamModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		EB2F776729E9CCC5007E87C3 /* CorrectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectViewController.swift; sourceTree = "<group>"; };
 		EB2F776929E9CCE8007E87C3 /* WrongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongViewController.swift; sourceTree = "<group>"; };
 		EB2F776B29E9CD2B007E87C3 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		EBAAE0B129ED0C2900F039F5 /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		EB2F774229E9CB61007E87C3 /* Crocodile */ = {
 			isa = PBXGroup;
 			children = (
+				EBAAE0B029ED0C1900F039F5 /* TeamModel */,
 				EB2F775E29E9CB84007E87C3 /* MainViewController */,
 				EB2F775D29E9CB81007E87C3 /* RulesViewController */,
 				EB2F775C29E9CB7D007E87C3 /* TeamViewController */,
@@ -149,6 +152,14 @@
 			path = MainViewController;
 			sourceTree = "<group>";
 		};
+		EBAAE0B029ED0C1900F039F5 /* TeamModel */ = {
+			isa = PBXGroup;
+			children = (
+				EBAAE0B129ED0C2900F039F5 /* TeamModel.swift */,
+			);
+			path = TeamModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -228,6 +239,7 @@
 				EB2F776429E9CC22007E87C3 /* CategoryViewController.swift in Sources */,
 				EB2F776229E9CBFA007E87C3 /* TeamViewController.swift in Sources */,
 				EB2F776A29E9CCE8007E87C3 /* WrongViewController.swift in Sources */,
+				EBAAE0B229ED0C2900F039F5 /* TeamModel.swift in Sources */,
 				EB2F776829E9CCC5007E87C3 /* CorrectViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
