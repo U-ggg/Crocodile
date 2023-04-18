@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		555C847829EE806700AABDAB /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555C847729EE806700AABDAB /* CategoryModel.swift */; };
+		555C847A29EE80A700AABDAB /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555C847929EE80A700AABDAB /* CategoryCollectionViewCell.swift */; };
 		EB2F774429E9CB61007E87C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F774329E9CB61007E87C3 /* AppDelegate.swift */; };
 		EB2F774629E9CB61007E87C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F774529E9CB61007E87C3 /* SceneDelegate.swift */; };
 		EB2F774829E9CB61007E87C3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F774729E9CB61007E87C3 /* MainViewController.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		555C847729EE806700AABDAB /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		555C847929EE80A700AABDAB /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		EB2F774029E9CB61007E87C3 /* Crocodile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crocodile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2F774329E9CB61007E87C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB2F774529E9CB61007E87C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		555C847629EE800C00AABDAB /* CategoryModel */ = {
+			isa = PBXGroup;
+			children = (
+				555C847729EE806700AABDAB /* CategoryModel.swift */,
+			);
+			path = CategoryModel;
+			sourceTree = "<group>";
+		};
 		EB2F773729E9CB61007E87C3 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +82,7 @@
 		EB2F774229E9CB61007E87C3 /* Crocodile */ = {
 			isa = PBXGroup;
 			children = (
+				555C847629EE800C00AABDAB /* CategoryModel */,
 				EBAAE0B029ED0C1900F039F5 /* TeamModel */,
 				EB2F775E29E9CB84007E87C3 /* MainViewController */,
 				EB2F775D29E9CB81007E87C3 /* RulesViewController */,
@@ -123,6 +136,7 @@
 		EB2F775B29E9CB7B007E87C3 /* CategoryViewController */ = {
 			isa = PBXGroup;
 			children = (
+				555C847929EE80A700AABDAB /* CategoryCollectionViewCell.swift */,
 				EB2F776329E9CC22007E87C3 /* CategoryViewController.swift */,
 			);
 			path = CategoryViewController;
@@ -231,10 +245,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB2F776629E9CC9C007E87C3 /* GameViewController.swift in Sources */,
+				555C847829EE806700AABDAB /* CategoryModel.swift in Sources */,
 				EB2F774829E9CB61007E87C3 /* MainViewController.swift in Sources */,
 				EB2F774429E9CB61007E87C3 /* AppDelegate.swift in Sources */,
 				EB2F776029E9CBD7007E87C3 /* RulesViewController.swift in Sources */,
 				EB2F774629E9CB61007E87C3 /* SceneDelegate.swift in Sources */,
+				555C847A29EE80A700AABDAB /* CategoryCollectionViewCell.swift in Sources */,
 				EB2F776C29E9CD2B007E87C3 /* ResultViewController.swift in Sources */,
 				EB2F776429E9CC22007E87C3 /* CategoryViewController.swift in Sources */,
 				EB2F776229E9CBFA007E87C3 /* TeamViewController.swift in Sources */,
