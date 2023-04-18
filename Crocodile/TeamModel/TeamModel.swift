@@ -10,6 +10,6 @@ import UIKit
 struct TeamModel {
     var name: String
     var image: UIImage
-    var score: Int
+    var score = 0
 }
 
