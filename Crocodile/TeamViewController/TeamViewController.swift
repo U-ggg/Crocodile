@@ -10,6 +10,8 @@ import SnapKit
 
 class TeamViewController: UIViewController {
     
+    var ind = Int()
+    
     private let identifier = "Cell"
     
     private lazy var readyButton: UIButton = {
@@ -30,7 +32,7 @@ class TeamViewController: UIViewController {
         return button
     }()
     
-    private var teamArray = [
+    public var teamArray = [
         TeamModel(name: "Барсики", image: UIImage(named: "cat")!),
         TeamModel(name: "Стройняшки", image: UIImage(named: "fat")!)
     ]
@@ -113,5 +115,7 @@ extension TeamViewController: UICollectionViewDataSource {
 }
 
 extension TeamViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
+    }
 }
