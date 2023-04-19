@@ -9,6 +9,8 @@ import UIKit
 
 class TeamData {
     
+    static var shared = TeamData()
+    
     var teamArray = [
         TeamModel(name: "Барсики", image: UIImage(named: "cat")!),
         TeamModel(name: "Стройняшки", image: UIImage(named: "fat")!)
@@ -20,4 +22,7 @@ class TeamData {
         TeamModel(name: "Пришельцы", image: UIImage(named: "ufo")!),
         TeamModel(name: "Ковбои", image: UIImage(named: "cowboy")!)
     ]
+    
 }
+
+

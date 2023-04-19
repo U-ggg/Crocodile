@@ -54,7 +54,7 @@ class TeamViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-    
+        
         setupViews()
         
     }
@@ -73,15 +73,13 @@ class TeamViewCell: UICollectionViewCell {
         textField.resignFirstResponder()
         endEditing = textField.text ?? "Error"
         
-//        for i in 0..<teamData.teamArray.count {
-//            if teamData.teamArray[i].name == startEditing {
-//                teamData.teamArray[i].name = endEditing
-//                print(teamData.teamArray[i].name)
-//                print(TeamViewController().teamData.teamArray[i].name)
-//            }
-//        }
+        for i in 0..<TeamData.shared.teamArray.count {
+            if TeamData.shared.teamArray[i].name == startEditing {
+                TeamData.shared.teamArray[i].name = endEditing
+            }
+        }
     }
-        
+    
     private func setupViews() {
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(avatarImage)

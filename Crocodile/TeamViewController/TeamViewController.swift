@@ -10,8 +10,6 @@ import SnapKit
 
 class TeamViewController: UIViewController {
     
-     var teamData = TeamData()
-    
     private let identifier = "Cell"
     
     private lazy var readyButton: UIButton = {
@@ -31,7 +29,7 @@ class TeamViewController: UIViewController {
         button.addTarget(self, action: #selector(pressedButton(sender:)), for: .touchUpInside)
         return button
     }()
-            
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UILayoutGuide()
         let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
@@ -53,7 +51,7 @@ class TeamViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
-    
+        
     }
     
     private func setupViews() {
@@ -82,12 +80,10 @@ class TeamViewController: UIViewController {
         if sender.currentTitle == readyButton.titleLabel?.text {
             navigationController?.pushViewController(CategoryViewController(), animated: true)
         } else if sender.currentTitle == addButton.titleLabel?.text {
-            if teamData.teamArray.count < 6 {
-                var n = 0
-                teamData.newTeamArray.shuffle()
-                teamData.teamArray.append(teamData.newTeamArray[0])
-                teamData.newTeamArray.remove(at: 0)
-                n += 1
+            if TeamData.shared.teamArray.count < 6 {
+                TeamData.shared.teamArray.shuffle()
+                TeamData.shared.teamArray.append(TeamData.shared.newTeamArray[0])
+                TeamData.shared.newTeamArray.remove(at: 0)
                 collectionView.reloadData()
             } else {
                 let alert = UIAlertController(title: "Информация",
@@ -104,12 +100,12 @@ class TeamViewController: UIViewController {
 
 extension TeamViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        teamData.teamArray.count
+        TeamData.shared.teamArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? TeamViewCell
-        cell?.config(model: teamData.teamArray[indexPath.row])
+        cell?.config(model: TeamData.shared.teamArray[indexPath.row])
         cell?.layer.backgroundColor = UIColor.white.cgColor
         cell?.layer.cornerRadius = 25
         return cell ?? UICollectionViewCell()
