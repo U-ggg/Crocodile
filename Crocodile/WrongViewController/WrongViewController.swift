@@ -28,7 +28,7 @@ class WrongViewController: UIViewController {
     }()
     // MARK: - let/var
     let teamView = TeamView()
-    let loseView = LoseView()
+    let scoreView = ScoreView()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +42,14 @@ extension WrongViewController {
         view.addSubview(backgroundImageView)
         view.addSubview(teamView)
         teamView.numberLabel.text = "2"
-        view.addSubview(loseView)
+        view.addSubview(scoreView)
+        scoreView.backgroundColor = UIColor(named: "red")
+        scoreView.mainLabel.text = "УВЫ И АХ"
+        scoreView.secondLabel.text = "Вы не отгадали слово и не получаете \n очков"
+        scoreView.scoreImageView.image = UIImage(named: "circle")
+        scoreView.numberLabel.text = "0"
+        scoreView.scoreLabel.isHidden = true
+        
         view.addSubview(button)
     }
     // MARK: - setConstrains
@@ -65,7 +72,7 @@ extension WrongViewController {
             make.height.equalTo(60)
         }
         // MARK: - loseView
-        loseView.snp.makeConstraints { make in
+        scoreView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(12)
             make.top.equalTo(teamView.snp.bottom).inset(-86)
             make.height.equalTo(301)

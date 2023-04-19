@@ -1,17 +1,17 @@
 //
-//  lLoseVc.swift
+//  ScoreView.swift
 //  Crocodile
 //
-//  Created by Sergey Medvedev on 17.04.2023.
+//  Created by Sergey Medvedev on 19.04.2023.
 //
 
 import UIKit
 
-class LoseView: UIView {
-    // MARK: - loseLabel
-    let loseLabel: UILabel = {
+class ScoreView: UIView {
+    // MARK: - winLabel
+    let mainLabel: UILabel = {
         let label = UILabel()
-        label.text = "УВЫ И АХ"
+        label.text = "Поздравляем"
         label.font = .systemFont(ofSize: 28, weight: .bold)
         
         return label
@@ -19,17 +19,15 @@ class LoseView: UIView {
     // MARK: - secondLabel
     let secondLabel: UILabel = {
         let label = UILabel()
-        label.text = "Вы не отгадали слово и не получаете \n очков"
-        label.font = .systemFont(ofSize: 18)
-        label.textAlignment = .center
-        label.numberOfLines = 0
+        label.text = "Вы получаете"
+        label.font = .systemFont(ofSize: 17)
         
         return label
     }()
-    // MARK: - circleImageView
-    let circleImageView: UIImageView = {
+    // MARK: - starImageView
+    let scoreImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "circle")
+        imageView.image = UIImage(named: "star")
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         
@@ -38,9 +36,18 @@ class LoseView: UIView {
     // MARK: - numberLabel
     let numberLabel: UILabel = {
         let label = UILabel()
-        label.text = "0"
+        label.text = "1"
         label.font = .cookieMedium80()
         label.textColor = .white
+        
+        return label
+    }()
+    // MARK: - scoreLabel
+    let scoreLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Очки"
+        label.font = .systemFont(ofSize: 15)
+        label.textColor = UIColor(red: 1, green: 0.901, blue: 0.008, alpha: 1)
         
         return label
     }()
@@ -65,43 +72,42 @@ class LoseView: UIView {
     }
     // MARK: - setupViews
     private func setupViews() {
-        backgroundColor = UIColor(named: "red")
+        backgroundColor = UIColor(named: "bgButton")
         layer.cornerRadius = 20
         
-        addSubview(loseLabel)
+        addSubview(mainLabel)
         addSubview(secondLabel)
-        addSubview(circleImageView)
+        addSubview(scoreImageView)
         addSubview(numberLabel)
+        addSubview(scoreLabel)
         addSubview(bottomLabel)
     }
     // MARK: - setConstrains
     private func setConstrains() {
-        // MARK: - loseLabel
-        loseLabel.snp.makeConstraints { make in
+        mainLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().inset(43)
         }
-        // MARK: - secondLabel
         secondLabel.snp.makeConstraints { make in
-            make.top.equalTo(loseLabel.snp.bottom).inset(-24)
-            make.leading.equalToSuperview().inset(10)
-            make.trailing.equalToSuperview().inset(10)
+            make.top.equalTo(mainLabel.snp.bottom).inset(-24)
             make.centerX.equalToSuperview()
         }
-        // MARK: - circleImageView
-        circleImageView.snp.makeConstraints { make in
-            make.top.equalTo(secondLabel.snp.bottom).inset(-10)
+        scoreImageView.snp.makeConstraints { make in
+            make.top.equalTo(secondLabel.snp.bottom).inset(-5)
             make.centerX.equalToSuperview()
         }
-        // MARK: - numberLabel
         numberLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(circleImageView.snp.centerX)
-            make.centerY.equalTo(circleImageView.snp.centerY)
+            make.centerX.equalTo(scoreImageView.snp.centerX)
+            make.centerY.equalTo(scoreImageView.snp.centerY)
         }
-        // MARK: - bottomLabel
+        scoreLabel.snp.makeConstraints { make in
+            make.top.equalTo(scoreImageView.snp.bottom).inset(5)
+            make.centerX.equalToSuperview()
+        }
         bottomLabel.snp.makeConstraints { make in
-            make.top.equalTo(circleImageView.snp.bottom).inset(-10)
+            make.top.equalTo(scoreLabel.snp.bottom).inset(-10)
             make.centerX.equalToSuperview()
         }
     }
 }
+

@@ -8,12 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		322396EC29ED74790082F1A1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 322396EB29ED74790082F1A1 /* SnapKit */; };
-		322396F029ED763D0082F1A1 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322396EF29ED763D0082F1A1 /* TeamView.swift */; };
-		322396F229ED7A9D0082F1A1 /* WinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322396F129ED7A9D0082F1A1 /* WinView.swift */; };
 		322396F629ED88B30082F1A1 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 322396F429ED88B20082F1A1 /* OFL.txt */; };
 		322396F729ED88B30082F1A1 /* Cookie-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 322396F529ED88B30082F1A1 /* Cookie-Regular.ttf */; };
 		322396FB29ED89380082F1A1 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322396FA29ED89380082F1A1 /* UIFont + Extensions.swift */; };
-		32E9912429EDB71A00DB592B /* LoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E9912329EDB71A00DB592B /* LoseView.swift */; };
+		32C8932029EFD83900B7D712 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C8931F29EFD83900B7D712 /* TeamView.swift */; };
+		32C8932429EFD8EB00B7D712 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C8932329EFD8EB00B7D712 /* ScoreView.swift */; };
 		EB2F774429E9CB61007E87C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F774329E9CB61007E87C3 /* AppDelegate.swift */; };
 		EB2F774629E9CB61007E87C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F774529E9CB61007E87C3 /* SceneDelegate.swift */; };
 		EB2F774829E9CB61007E87C3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F774729E9CB61007E87C3 /* MainViewController.swift */; };
@@ -30,12 +29,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		322396EF29ED763D0082F1A1 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TeamView.swift; path = ../../../../TeamView.swift; sourceTree = "<group>"; };
-		322396F129ED7A9D0082F1A1 /* WinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WinView.swift; path = ../../../../WinView.swift; sourceTree = "<group>"; };
 		322396F429ED88B20082F1A1 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		322396F529ED88B30082F1A1 /* Cookie-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cookie-Regular.ttf"; sourceTree = "<group>"; };
 		322396FA29ED89380082F1A1 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
-		32E9912329EDB71A00DB592B /* LoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseView.swift; sourceTree = "<group>"; };
+		32C8931F29EFD83900B7D712 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
+		32C8932329EFD8EB00B7D712 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		EB2F774029E9CB61007E87C3 /* Crocodile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crocodile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2F774329E9CB61007E87C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB2F774529E9CB61007E87C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,19 +66,10 @@
 		322396ED29ED75CD0082F1A1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				322396EE29ED76210082F1A1 /* CorrectVC */,
-				32E9912229EDB6E600DB592B /* WrongVC */,
+				32C8931F29EFD83900B7D712 /* TeamView.swift */,
+				32C8932329EFD8EB00B7D712 /* ScoreView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		322396EE29ED76210082F1A1 /* CorrectVC */ = {
-			isa = PBXGroup;
-			children = (
-				322396EF29ED763D0082F1A1 /* TeamView.swift */,
-				322396F129ED7A9D0082F1A1 /* WinView.swift */,
-			);
-			path = CorrectVC;
 			sourceTree = "<group>";
 		};
 		322396F329ED886A0082F1A1 /* Fonts */ = {
@@ -106,14 +95,6 @@
 				322396FA29ED89380082F1A1 /* UIFont + Extensions.swift */,
 			);
 			path = UIKit;
-			sourceTree = "<group>";
-		};
-		32E9912229EDB6E600DB592B /* WrongVC */ = {
-			isa = PBXGroup;
-			children = (
-				32E9912329EDB71A00DB592B /* LoseView.swift */,
-			);
-			path = WrongVC;
 			sourceTree = "<group>";
 		};
 		EB2F773729E9CB61007E87C3 = {
@@ -307,11 +288,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB2F776629E9CC9C007E87C3 /* GameViewController.swift in Sources */,
-				322396F229ED7A9D0082F1A1 /* WinView.swift in Sources */,
 				EB2F774829E9CB61007E87C3 /* MainViewController.swift in Sources */,
 				EB2F774429E9CB61007E87C3 /* AppDelegate.swift in Sources */,
 				EB2F776029E9CBD7007E87C3 /* RulesViewController.swift in Sources */,
-				32E9912429EDB71A00DB592B /* LoseView.swift in Sources */,
+				32C8932029EFD83900B7D712 /* TeamView.swift in Sources */,
 				EB2F774629E9CB61007E87C3 /* SceneDelegate.swift in Sources */,
 				EB2F776C29E9CD2B007E87C3 /* ResultViewController.swift in Sources */,
 				EB2F776429E9CC22007E87C3 /* CategoryViewController.swift in Sources */,
@@ -320,7 +300,7 @@
 				EB2F776A29E9CCE8007E87C3 /* WrongViewController.swift in Sources */,
 				EBAAE0B229ED0C2900F039F5 /* TeamModel.swift in Sources */,
 				EB2F776829E9CCC5007E87C3 /* CorrectViewController.swift in Sources */,
-				322396F029ED763D0082F1A1 /* TeamView.swift in Sources */,
+				32C8932429EFD8EB00B7D712 /* ScoreView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

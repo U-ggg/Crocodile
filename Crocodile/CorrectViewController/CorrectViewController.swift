@@ -29,7 +29,7 @@ class CorrectViewController: UIViewController {
     }()
     // MARK: - let/var
     let teamView = TeamView()
-    let winView = WinView()
+    let scoreView = ScoreView()
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,7 @@ extension CorrectViewController {
     private func setupViews() {
         view.addSubview(backgroundImageView)
         view.addSubview(teamView)
-        view.addSubview(winView)
+        view.addSubview(scoreView)
         view.addSubview(button)
     }
     // MARK: - setConstrains
@@ -59,7 +59,7 @@ extension CorrectViewController {
             make.height.equalTo(96)
         }
         // MARK: - winView
-        winView.snp.makeConstraints { make in
+        scoreView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(12)
             make.top.equalTo(teamView.snp.bottom).inset(-86)
             make.height.equalTo(301)
