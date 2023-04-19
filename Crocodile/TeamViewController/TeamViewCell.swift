@@ -9,10 +9,9 @@ import UIKit
 import SnapKit
 
 class TeamViewCell: UICollectionViewCell {
-    
-    var model = TeamModel(name: "fdsf", image: UIImage(systemName: "swift")!)
-    
-    var editedText = String()
+
+    var startEditing = String()
+    var endEditing = String()
     
     private lazy var stackView: UIStackView = {
         let view = UIStackView()
@@ -23,20 +22,20 @@ class TeamViewCell: UICollectionViewCell {
         return view
     }()
     
-    private lazy var textFieldstackView: UIStackView = {
-        let view = UIStackView()
-        view.axis = .horizontal
-        view.distribution = .fillProportionally
-        view.spacing = 1
-        return view
-    }()
-        
     private lazy var closeButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "close"), for: .normal)
+        button.isHidden = true
         return button
     }()
-
+    
+    private lazy var editButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(systemName: "pencil"), for: .normal)
+        button.addTarget(self, action: #selector(selectedEditButton), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var avatarImage: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
@@ -48,6 +47,7 @@ class TeamViewCell: UICollectionViewCell {
         textField.textAlignment = .left
         textField.clearButtonMode = .whileEditing
         textField.placeholder = "Имя команды"
+        textField.isEnabled = false
         textField.addTarget(self, action: #selector(ending(textField:)), for: .editingDidEndOnExit)
         return textField
     }()
@@ -56,26 +56,32 @@ class TeamViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         setupViews()
-        model.name = nameTextField.text!
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc private func ending(textField: UITextField) {
-        textField.resignFirstResponder()
-        editedText = textField.text ?? "Error"
-        print(editedText)
+    @objc private func selectedEditButton() {
+        nameTextField.isEnabled = !nameTextField.isEnabled
+        nameTextField.becomeFirstResponder()
+        startEditing = nameTextField.text ?? "Error"
     }
     
+    @objc private func ending(textField: UITextField) {
+        textField.resignFirstResponder()
+        endEditing = textField.text ?? "Error"
+    }
+        
     private func setupViews() {
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(avatarImage)
         stackView.addArrangedSubview(nameTextField)
+        stackView.addArrangedSubview(editButton)
         stackView.addArrangedSubview(closeButton)
-       
-
+        
+        
         stackView.snp.makeConstraints { make in
             make.verticalEdges.equalTo(contentView.safeAreaLayoutGuide.snp.verticalEdges)
             make.horizontalEdges.equalToSuperview().inset(30)
@@ -84,7 +90,11 @@ class TeamViewCell: UICollectionViewCell {
         avatarImage.snp.makeConstraints { make in
             make.size.equalTo(50)
         }
-
+        
+        editButton.snp.makeConstraints { make in
+            make.size.equalTo(25)
+        }
+        
         closeButton.snp.makeConstraints { make in
             make.size.equalTo(25)
         }

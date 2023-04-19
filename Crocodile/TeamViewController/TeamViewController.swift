@@ -10,8 +10,6 @@ import SnapKit
 
 class TeamViewController: UIViewController {
     
-    var ind = Int()
-    
     private let identifier = "Cell"
     
     private lazy var readyButton: UIButton = {
@@ -65,7 +63,7 @@ class TeamViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
-        
+    
     }
     
     private func setupViews() {
@@ -114,8 +112,4 @@ extension TeamViewController: UICollectionViewDataSource {
     }
 }
 
-extension TeamViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-    }
-}
+extension TeamViewController: UICollectionViewDelegate { }
