@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class TeamViewCell: UICollectionViewCell {
-
+    
     var startEditing = String()
     var endEditing = String()
     
@@ -22,7 +22,7 @@ class TeamViewCell: UICollectionViewCell {
         return view
     }()
     
-    private lazy var closeButton: UIButton = {
+    lazy var closeButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "close"), for: .normal)
         button.isHidden = true
@@ -54,7 +54,7 @@ class TeamViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+    
         setupViews()
         
     }
@@ -72,6 +72,14 @@ class TeamViewCell: UICollectionViewCell {
     @objc private func ending(textField: UITextField) {
         textField.resignFirstResponder()
         endEditing = textField.text ?? "Error"
+        
+//        for i in 0..<teamData.teamArray.count {
+//            if teamData.teamArray[i].name == startEditing {
+//                teamData.teamArray[i].name = endEditing
+//                print(teamData.teamArray[i].name)
+//                print(TeamViewController().teamData.teamArray[i].name)
+//            }
+//        }
     }
         
     private func setupViews() {

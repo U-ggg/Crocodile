@@ -10,6 +10,8 @@ import SnapKit
 
 class TeamViewController: UIViewController {
     
+     var teamData = TeamData()
+    
     private let identifier = "Cell"
     
     private lazy var readyButton: UIButton = {
@@ -29,19 +31,7 @@ class TeamViewController: UIViewController {
         button.addTarget(self, action: #selector(pressedButton(sender:)), for: .touchUpInside)
         return button
     }()
-    
-    public var teamArray = [
-        TeamModel(name: "Барсики", image: UIImage(named: "cat")!),
-        TeamModel(name: "Стройняшки", image: UIImage(named: "fat")!)
-    ]
-    
-    private var newTeamArray = [
-        TeamModel(name: "Ежики", image: UIImage(named: "hedgehog")!),
-        TeamModel(name: "Персики", image: UIImage(named: "peach")!),
-        TeamModel(name: "Пришельцы", image: UIImage(named: "ufo")!),
-        TeamModel(name: "Ковбои", image: UIImage(named: "cowboy")!)
-    ]
-    
+            
     private lazy var collectionView: UICollectionView = {
         let layout = UILayoutGuide()
         let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
@@ -92,7 +82,21 @@ class TeamViewController: UIViewController {
         if sender.currentTitle == readyButton.titleLabel?.text {
             navigationController?.pushViewController(CategoryViewController(), animated: true)
         } else if sender.currentTitle == addButton.titleLabel?.text {
-            
+            if teamData.teamArray.count < 6 {
+                var n = 0
+                teamData.newTeamArray.shuffle()
+                teamData.teamArray.append(teamData.newTeamArray[0])
+                teamData.newTeamArray.remove(at: 0)
+                n += 1
+                collectionView.reloadData()
+            } else {
+                let alert = UIAlertController(title: "Информация",
+                                              message: "Это максимальное количетсво команд",
+                                              preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default)
+                alert.addAction(action)
+                present(alert, animated: true)
+            }
         }
     }
 }
@@ -100,12 +104,12 @@ class TeamViewController: UIViewController {
 
 extension TeamViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        teamArray.count
+        teamData.teamArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? TeamViewCell
-        cell?.config(model: teamArray[indexPath.row])
+        cell?.config(model: teamData.teamArray[indexPath.row])
         cell?.layer.backgroundColor = UIColor.white.cgColor
         cell?.layer.cornerRadius = 25
         return cell ?? UICollectionViewCell()

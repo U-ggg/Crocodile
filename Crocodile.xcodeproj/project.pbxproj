@@ -21,6 +21,7 @@
 		EB2F776829E9CCC5007E87C3 /* CorrectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F776729E9CCC5007E87C3 /* CorrectViewController.swift */; };
 		EB2F776A29E9CCE8007E87C3 /* WrongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F776929E9CCE8007E87C3 /* WrongViewController.swift */; };
 		EB2F776C29E9CD2B007E87C3 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F776B29E9CD2B007E87C3 /* ResultViewController.swift */; };
+		EB70994C29EFBA9000E3036F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70994B29EFBA9000E3036F /* Model.swift */; };
 		EBAAE0B229ED0C2900F039F5 /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAAE0B129ED0C2900F039F5 /* TeamModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		EB2F776729E9CCC5007E87C3 /* CorrectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectViewController.swift; sourceTree = "<group>"; };
 		EB2F776929E9CCE8007E87C3 /* WrongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongViewController.swift; sourceTree = "<group>"; };
 		EB2F776B29E9CD2B007E87C3 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		EB70994B29EFBA9000E3036F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		EBAAE0B129ED0C2900F039F5 /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +161,7 @@
 			children = (
 				EB08D7CD29EE517D0018B5FD /* TeamViewController.swift */,
 				EB08D7CF29EE52A50018B5FD /* TeamViewCell.swift */,
+				EB70994B29EFBA9000E3036F /* Model.swift */,
 			);
 			path = TeamViewController;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				EB08D7D029EE52A50018B5FD /* TeamViewCell.swift in Sources */,
 				EB2F774429E9CB61007E87C3 /* AppDelegate.swift in Sources */,
 				EB2F776029E9CBD7007E87C3 /* RulesViewController.swift in Sources */,
+				EB70994C29EFBA9000E3036F /* Model.swift in Sources */,
 				EB2F774629E9CB61007E87C3 /* SceneDelegate.swift in Sources */,
 				EB2F776C29E9CD2B007E87C3 /* ResultViewController.swift in Sources */,
 				EB2F776429E9CC22007E87C3 /* CategoryViewController.swift in Sources */,
