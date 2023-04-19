@@ -51,7 +51,19 @@ class TeamViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
+        notification()
         
+    }
+    
+    private func notification() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(notification:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide(notification:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
     
     private func setupViews() {
@@ -81,7 +93,7 @@ class TeamViewController: UIViewController {
             navigationController?.pushViewController(CategoryViewController(), animated: true)
         } else if sender.currentTitle == addButton.titleLabel?.text {
             if TeamData.shared.teamArray.count < 6 {
-                TeamData.shared.teamArray.shuffle()
+                TeamData.shared.newTeamArray.shuffle()
                 TeamData.shared.teamArray.append(TeamData.shared.newTeamArray[0])
                 TeamData.shared.newTeamArray.remove(at: 0)
                 collectionView.reloadData()
@@ -89,11 +101,22 @@ class TeamViewController: UIViewController {
                 let alert = UIAlertController(title: "Информация",
                                               message: "Это максимальное количетсво команд",
                                               preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .default)
+                let action = UIAlertAction(title: "OK",
+                                           style: .default)
                 alert.addAction(action)
                 present(alert, animated: true)
             }
         }
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        self.view.frame.origin.y -= keyboardSize.height
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
     }
 }
 
@@ -104,7 +127,8 @@ extension TeamViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? TeamViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier,
+                                                      for: indexPath)as? TeamViewCell
         cell?.config(model: TeamData.shared.teamArray[indexPath.row])
         cell?.layer.backgroundColor = UIColor.white.cgColor
         cell?.layer.cornerRadius = 25
@@ -112,4 +136,11 @@ extension TeamViewController: UICollectionViewDataSource {
     }
 }
 
-extension TeamViewController: UICollectionViewDelegate { }
+extension TeamViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        TeamData.shared.newTeamArray.append(TeamData.shared.teamArray[indexPath.row])
+        TeamData.shared.teamArray.remove(at: indexPath.row)
+        collectionView.reloadData()
+    }
+}
+

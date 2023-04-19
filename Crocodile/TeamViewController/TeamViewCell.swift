@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class TeamViewCell: UICollectionViewCell {
+class TeamViewCell: UICollectionViewCell, UITextFieldDelegate {
     
     var startEditing = String()
     var endEditing = String()
@@ -26,6 +26,7 @@ class TeamViewCell: UICollectionViewCell {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "close"), for: .normal)
         button.isHidden = true
+        button.addTarget(self, action: #selector(deletedCloseButton), for: .touchUpInside)
         return button
     }()
     
@@ -42,12 +43,13 @@ class TeamViewCell: UICollectionViewCell {
         return view
     }()
     
-    private lazy var nameTextField: UITextField = {
+    lazy var nameTextField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .left
         textField.clearButtonMode = .whileEditing
         textField.placeholder = "Имя команды"
         textField.isEnabled = false
+        textField.delegate = self
         textField.addTarget(self, action: #selector(ending(textField:)), for: .editingDidEndOnExit)
         return textField
     }()
@@ -64,9 +66,20 @@ class TeamViewCell: UICollectionViewCell {
     }
     
     @objc private func selectedEditButton() {
-        nameTextField.isEnabled = !nameTextField.isEnabled
-        nameTextField.becomeFirstResponder()
-        startEditing = nameTextField.text ?? "Error"
+        if nameTextField.isEnabled == false {
+            nameTextField.isEnabled = !nameTextField.isEnabled
+            nameTextField.becomeFirstResponder()
+            startEditing = nameTextField.text ?? "Error"
+        } else {
+            nameTextField.isEnabled = !nameTextField.isEnabled
+            nameTextField.becomeFirstResponder()
+            endEditing = nameTextField.text ?? "Error"
+            for i in 0..<TeamData.shared.teamArray.count {
+                if TeamData.shared.teamArray[i].name == startEditing {
+                    TeamData.shared.teamArray[i].name = endEditing
+                }
+            }
+        }
     }
     
     @objc private func ending(textField: UITextField) {
@@ -80,13 +93,24 @@ class TeamViewCell: UICollectionViewCell {
         }
     }
     
+    private func hideCloseButton() {
+        if TeamData.shared.teamArray.count > 2 {
+            closeButton.isHidden = false
+        } else {
+            closeButton.isHidden = true
+        }
+    }
+    
+    @objc private func deletedCloseButton() {
+        
+    }
+    
     private func setupViews() {
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(avatarImage)
         stackView.addArrangedSubview(nameTextField)
         stackView.addArrangedSubview(editButton)
         stackView.addArrangedSubview(closeButton)
-        
         
         stackView.snp.makeConstraints { make in
             make.verticalEdges.equalTo(contentView.safeAreaLayoutGuide.snp.verticalEdges)
@@ -109,7 +133,19 @@ class TeamViewCell: UICollectionViewCell {
     public func config(model: TeamModel) {
         avatarImage.image = model.image
         nameTextField.text = model.name
+        hideCloseButton()
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+        endEditing = textField.text ?? "Error"
+        
+        for i in 0..<TeamData.shared.teamArray.count {
+            if TeamData.shared.teamArray[i].name == startEditing {
+                TeamData.shared.teamArray[i].name = endEditing
+            }
+        }
+        nameTextField.isEnabled = false
+    }
+    
 }
-
-
