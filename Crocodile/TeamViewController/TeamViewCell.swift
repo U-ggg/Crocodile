@@ -26,7 +26,7 @@ class TeamViewCell: UICollectionViewCell, UITextFieldDelegate {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "close"), for: .normal)
         button.isHidden = true
-        button.addTarget(self, action: #selector(deletedCloseButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(deletedCloseButton(sender:)), for: .touchUpInside)
         return button
     }()
     
@@ -101,8 +101,18 @@ class TeamViewCell: UICollectionViewCell, UITextFieldDelegate {
         }
     }
     
-    @objc private func deletedCloseButton() {
+    private func deleteArrayValue() {
         
+    }
+    
+    @objc private func deletedCloseButton(sender: UIButton) {
+        print(sender.tag)
+        for i in 0..<TeamData.shared.teamArray.count {
+            if sender.tag == i {
+                TeamData.shared.newTeamArray.append(TeamData.shared.teamArray[i])
+                TeamData.shared.teamArray.remove(at: i)
+            }
+        }
     }
     
     private func setupViews() {
