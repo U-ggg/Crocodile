@@ -8,10 +8,9 @@
 import UIKit
 import SnapKit
 
-class TeamViewCell: UICollectionViewCell, UITextFieldDelegate {
+class TeamViewCell: UICollectionViewCell {
     
-    var startEditing = String()
-    var endEditing = String()
+    weak var delegate: TeamViewCellDelegate?
     
     private lazy var stackView: UIStackView = {
         let view = UIStackView()
@@ -30,13 +29,6 @@ class TeamViewCell: UICollectionViewCell, UITextFieldDelegate {
         return button
     }()
     
-    private lazy var editButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setImage(UIImage(systemName: "pencil"), for: .normal)
-        button.addTarget(self, action: #selector(selectedEditButton), for: .touchUpInside)
-        return button
-    }()
-    
     private lazy var avatarImage: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
@@ -48,9 +40,7 @@ class TeamViewCell: UICollectionViewCell, UITextFieldDelegate {
         textField.textAlignment = .left
         textField.clearButtonMode = .whileEditing
         textField.placeholder = "Имя команды"
-        textField.isEnabled = false
         textField.delegate = self
-        textField.addTarget(self, action: #selector(ending(textField:)), for: .editingDidEndOnExit)
         return textField
     }()
     
@@ -65,32 +55,8 @@ class TeamViewCell: UICollectionViewCell, UITextFieldDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc private func selectedEditButton() {
-        if nameTextField.isEnabled == false {
-            nameTextField.isEnabled = !nameTextField.isEnabled
-            nameTextField.becomeFirstResponder()
-            startEditing = nameTextField.text ?? "Error"
-        } else {
-            nameTextField.isEnabled = !nameTextField.isEnabled
-            nameTextField.becomeFirstResponder()
-            endEditing = nameTextField.text ?? "Error"
-            for i in 0..<TeamData.shared.teamArray.count {
-                if TeamData.shared.teamArray[i].name == startEditing {
-                    TeamData.shared.teamArray[i].name = endEditing
-                }
-            }
-        }
-    }
-    
-    @objc private func ending(textField: UITextField) {
-        textField.resignFirstResponder()
-        endEditing = textField.text ?? "Error"
-        
-        for i in 0..<TeamData.shared.teamArray.count {
-            if TeamData.shared.teamArray[i].name == startEditing {
-                TeamData.shared.teamArray[i].name = endEditing
-            }
-        }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        TeamData.shared.checkName(textField: textField)
     }
     
     private func hideCloseButton() {
@@ -101,25 +67,10 @@ class TeamViewCell: UICollectionViewCell, UITextFieldDelegate {
         }
     }
     
-    private func deleteArrayValue() {
-        
-    }
-    
-    @objc private func deletedCloseButton(sender: UIButton) {
-        print(sender.tag)
-        for i in 0..<TeamData.shared.teamArray.count {
-            if sender.tag == i {
-                TeamData.shared.newTeamArray.append(TeamData.shared.teamArray[i])
-                TeamData.shared.teamArray.remove(at: i)
-            }
-        }
-    }
-    
     private func setupViews() {
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(avatarImage)
         stackView.addArrangedSubview(nameTextField)
-        stackView.addArrangedSubview(editButton)
         stackView.addArrangedSubview(closeButton)
         
         stackView.snp.makeConstraints { make in
@@ -131,13 +82,13 @@ class TeamViewCell: UICollectionViewCell, UITextFieldDelegate {
             make.size.equalTo(50)
         }
         
-        editButton.snp.makeConstraints { make in
-            make.size.equalTo(25)
-        }
-        
         closeButton.snp.makeConstraints { make in
             make.size.equalTo(25)
         }
+    }
+    
+    @objc private func deletedCloseButton(sender: UIButton) {
+        delegate?.didSelectDelegate(index: sender.tag)
     }
     
     public func config(model: TeamModel) {
@@ -145,17 +96,12 @@ class TeamViewCell: UICollectionViewCell, UITextFieldDelegate {
         nameTextField.text = model.name
         hideCloseButton()
     }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.resignFirstResponder()
-        endEditing = textField.text ?? "Error"
-        
-        for i in 0..<TeamData.shared.teamArray.count {
-            if TeamData.shared.teamArray[i].name == startEditing {
-                TeamData.shared.teamArray[i].name = endEditing
-            }
-        }
-        nameTextField.isEnabled = false
-    }
-    
 }
+
+extension TeamViewCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
+}
+

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class TeamViewController: UIViewController {
-
+    
     private let identifier = "Cell"
     
     private lazy var readyButton: UIButton = {
@@ -30,7 +30,7 @@ class TeamViewController: UIViewController {
         return button
     }()
     
-     lazy var collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let layout = UILayoutGuide()
         let view = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
         view.backgroundView = UIImageView(image: UIImage(named: "background"))
@@ -92,33 +92,29 @@ class TeamViewController: UIViewController {
         if sender.currentTitle == readyButton.titleLabel?.text {
             navigationController?.pushViewController(CategoryViewController(), animated: true)
         } else if sender.currentTitle == addButton.titleLabel?.text {
-            if TeamData.shared.teamArray.count < 6 {
-                TeamData.shared.newTeamArray.shuffle()
-                TeamData.shared.teamArray.append(TeamData.shared.newTeamArray[0])
-                TeamData.shared.newTeamArray.remove(at: 0)
-                collectionView.reloadData()
-            } else {
-                let alert = UIAlertController(title: "Информация",
-                                              message: "Это максимальное количетсво команд",
-                                              preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK",
-                                           style: .default)
-                alert.addAction(action)
-                present(alert, animated: true)
-            }
+            TeamData.shared.addTeam()
+            collectionView.reloadData()
+        } else {
+            let alert = UIAlertController(title: "Информация",
+                                          message: "Это максимальное количетсво команд",
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(action)
+            present(alert, animated: true)
         }
     }
+    
     
     @objc private func keyboardWillShow(notification: NSNotification) {
         if TeamData.shared.teamArray.count > 4 {
             guard let userInfo = notification.userInfo else { return }
             guard let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-            self.view.frame.origin.y -= keyboardSize.height
+            view.frame.origin.y -= keyboardSize.height / 2
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y = 0
+        view.frame.origin.y = 0
     }
 }
 
@@ -131,7 +127,9 @@ extension TeamViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier,
                                                       for: indexPath)as? TeamViewCell
+        cell?.delegate = self
         cell?.closeButton.tag = indexPath.row
+        cell?.nameTextField.tag = indexPath.row
         cell?.config(model: TeamData.shared.teamArray[indexPath.row])
         cell?.layer.backgroundColor = UIColor.white.cgColor
         cell?.layer.cornerRadius = 25
@@ -139,13 +137,18 @@ extension TeamViewController: UICollectionViewDataSource {
     }
 }
 
-extension TeamViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        TeamData.shared.newTeamArray.append(TeamData.shared.teamArray[indexPath.row])
-//        TeamData.shared.teamArray.remove(at: indexPath.row)
-//        collectionView.deleteItems(at: [indexPath])
+extension TeamViewController: UICollectionViewDelegate, TeamViewCellDelegate {
+    func didSelectDelegate(index: Int) {
+        TeamData.shared.newTeamArray.append(TeamData.shared.teamArray[index])
+        TeamData.shared.teamArray.remove(at: index)
+        TeamData.shared.removeAnimation = index
+        collectionView.reloadData()
     }
-    
-    
 }
+
+
+protocol TeamViewCellDelegate: AnyObject {
+    func didSelectDelegate(index: Int)
+}
+
 
