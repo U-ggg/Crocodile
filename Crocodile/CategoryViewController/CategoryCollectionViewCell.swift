@@ -6,8 +6,7 @@
 //
 
 import UIKit
-
-import UIKit
+import SnapKit
 
 class CategoryCollectionViewCell: UICollectionViewCell {
     
@@ -61,20 +60,22 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     }
     
     func setupConstraints() {
-        NSLayoutConstraint.activate([
-            categoryImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            categoryImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            categoryImage.heightAnchor.constraint(equalToConstant: 56),
-            categoryImage.widthAnchor.constraint(equalToConstant: 56),
-            
-            categoryName.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            categoryName.centerYAnchor.constraint(equalTo: categoryImage.centerYAnchor),
-            
-            checkmarkImageView.centerYAnchor.constraint(equalTo: categoryImage.centerYAnchor),
-            checkmarkImageView.heightAnchor.constraint(equalToConstant: 30),
-            checkmarkImageView.widthAnchor.constraint(equalToConstant: 30),
-            checkmarkImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-        ])
+        categoryImage.snp.makeConstraints { make in
+            make.centerY.equalTo(contentView)
+            make.leading.equalToSuperview().offset(20)
+            make.size.equalTo(56)
+        }
+        
+        categoryName.snp.makeConstraints { make in
+            make.centerX.equalTo(contentView)
+            make.centerY.equalTo(categoryImage)
+        }
+        
+        checkmarkImageView.snp.makeConstraints { make in
+            make.centerY.equalTo(categoryImage)
+            make.trailing.equalToSuperview().inset(20)
+            make.size.equalTo(30)
+        }
     }
     
     public func refresh(_ model: CategoryModel) {
