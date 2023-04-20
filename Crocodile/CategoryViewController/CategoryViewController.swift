@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class CategoryViewController: UIViewController {
     
@@ -65,27 +66,28 @@ class CategoryViewController: UIViewController {
     }
     
     func setupConstraints() {
-        NSLayoutConstraint.activate([
-            
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            
-            backGround.topAnchor.constraint(equalTo: view.topAnchor),
-            backGround.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backGround.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backGround.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            categoryCollection.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
-            categoryCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            categoryCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            categoryCollection.bottomAnchor.constraint(equalTo: startGameButton.topAnchor, constant: 16),
-            
-            startGameButton.heightAnchor.constraint(equalToConstant: 63),
-            startGameButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 14),
-            startGameButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -14),
-            startGameButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -63),
-        ])
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.centerX.equalTo(view.snp.centerX)
+        }
+        
+        backGround.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        categoryCollection.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.leading.equalTo(view.snp.leading).offset(16)
+            make.trailing.equalTo(view.snp.trailing).offset(-16)
+            make.bottom.equalTo(startGameButton.snp.top).offset(-16)
+        }
+        
+        startGameButton.snp.makeConstraints { make in
+            make.height.equalTo(63)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(14)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-14)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-63)
+        }
     }
     
     func setupCollectionView() {
