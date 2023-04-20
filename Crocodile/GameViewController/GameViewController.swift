@@ -24,11 +24,12 @@ class GameViewController: UIViewController {
         static let buttonHeightSpacing: CGFloat = 60.0
     }
     
-    let conditionManager = СonditionManager()
+    private let conditionManager = СonditionManager()
     
-    var timer: Timer?
-    var counter = 0
-    var audioPlayer: AVAudioPlayer?
+    private var timer: Timer?
+    private var counter = 0
+    private var trueButtonPressedCount = 0
+    private var audioPlayer: AVAudioPlayer?
     private let player = AudioManager()
     
     private lazy var backgroundImage: UIImageView = {
@@ -89,7 +90,7 @@ class GameViewController: UIViewController {
     }
     
     private func startTimer() {
-        counter = 25 // устанавливаем начальное значение счетчика
+        counter = 61 // устанавливаем начальное значение счетчика
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimerLabel), userInfo: nil, repeats: true)
     }
     
@@ -111,21 +112,28 @@ class GameViewController: UIViewController {
     @objc
     private func trueButtonTapped() {
         player.playSound(soundName: "pravilnyiyOtvet")
-        
-        UIView.animate(withDuration: 0.5, animations: {
-            self.crocodileImage.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
-        }, completion: { _ in
-            UIView.animate(withDuration: 0.5) {
-                self.crocodileImage.transform = CGAffineTransform.identity
+        trueButtonPressedCount += 1
+
+        if trueButtonPressedCount <= 5 {
+            timer?.invalidate()
+            counter = 61
+            startTimer()
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self.crocodileImage.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+            }, completion: { _ in
+                UIView.animate(withDuration: 0.5) {
+                    self.crocodileImage.transform = CGAffineTransform.identity
+                }
+            })
+            
+            if let condition = conditionManager.getNextCondition() {
+                conditionLabel.text = condition.text
+                print("Правильно")
+            } else {
+                timer?.invalidate()
             }
-        })
-        
-        if let condition = conditionManager.getNextCondition() {
-                  conditionLabel.text = condition.text
-              }
-        
-        
-        print("Правильно")
+        }
     }
     
     @objc
