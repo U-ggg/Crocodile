@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86675B4629F319C400B75837 /* gameLost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86675B4329F319C400B75837 /* gameLost.mp3 */; };
+		86675B4729F319C400B75837 /* pravilnyiyOtvet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86675B4429F319C400B75837 /* pravilnyiyOtvet.mp3 */; };
+		86675B4829F319C400B75837 /* 10s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86675B4529F319C400B75837 /* 10s.mp3 */; };
 		867A6D2829EDB21400C9B7A8 /* UILabel+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867A6D2729EDB21400C9B7A8 /* UILabel+App.swift */; };
 		867A6D2A29EDB53500C9B7A8 /* UIButton+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867A6D2929EDB53500C9B7A8 /* UIButton+App.swift */; };
 		867A6D2C29EDB67400C9B7A8 /* UIStackView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867A6D2B29EDB67400C9B7A8 /* UIStackView+App.swift */; };
 		867A6D2E29EDC1A900C9B7A8 /* UIColor+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867A6D2D29EDC1A900C9B7A8 /* UIColor+App.swift */; };
 		867A6D3229EEB3C400C9B7A8 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867A6D3129EEB3C400C9B7A8 /* GameModel.swift */; };
-		867A6D3929EEC84200C9B7A8 /* 10s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 867A6D3829EEC84200C9B7A8 /* 10s.mp3 */; };
 		867A6D3B29EF0E9800C9B7A8 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867A6D3A29EF0E9800C9B7A8 /* AudioManager.swift */; };
-		867A6D3D29EF0FD200C9B7A8 /* pravilnyiyOtvet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 867A6D3C29EF0FD200C9B7A8 /* pravilnyiyOtvet.mp3 */; };
-		867A6D3F29EF103400C9B7A8 /* gameLost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 867A6D3E29EF103400C9B7A8 /* gameLost.mp3 */; };
 		EB2F774429E9CB61007E87C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F774329E9CB61007E87C3 /* AppDelegate.swift */; };
 		EB2F774629E9CB61007E87C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F774529E9CB61007E87C3 /* SceneDelegate.swift */; };
 		EB2F774829E9CB61007E87C3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F774729E9CB61007E87C3 /* MainViewController.swift */; };
@@ -32,15 +32,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		86675B4329F319C400B75837 /* gameLost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameLost.mp3; path = ../../../../gameLost.mp3; sourceTree = "<group>"; };
+		86675B4429F319C400B75837 /* pravilnyiyOtvet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = pravilnyiyOtvet.mp3; path = ../../../../pravilnyiyOtvet.mp3; sourceTree = "<group>"; };
+		86675B4529F319C400B75837 /* 10s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = 10s.mp3; path = ../../../../10s.mp3; sourceTree = "<group>"; };
 		867A6D2729EDB21400C9B7A8 /* UILabel+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+App.swift"; sourceTree = "<group>"; };
 		867A6D2929EDB53500C9B7A8 /* UIButton+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+App.swift"; sourceTree = "<group>"; };
 		867A6D2B29EDB67400C9B7A8 /* UIStackView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+App.swift"; sourceTree = "<group>"; };
 		867A6D2D29EDC1A900C9B7A8 /* UIColor+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+App.swift"; sourceTree = "<group>"; };
 		867A6D3129EEB3C400C9B7A8 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
-		867A6D3829EEC84200C9B7A8 /* 10s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = 10s.mp3; path = ../../../../10s.mp3; sourceTree = "<group>"; };
 		867A6D3A29EF0E9800C9B7A8 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
-		867A6D3C29EF0FD200C9B7A8 /* pravilnyiyOtvet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = pravilnyiyOtvet.mp3; path = ../../../../pravilnyiyOtvet.mp3; sourceTree = "<group>"; };
-		867A6D3E29EF103400C9B7A8 /* gameLost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameLost.mp3; path = ../../../../gameLost.mp3; sourceTree = "<group>"; };
 		EB2F774029E9CB61007E87C3 /* Crocodile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crocodile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2F774329E9CB61007E87C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB2F774529E9CB61007E87C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +69,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		86675B4229F3193500B75837 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				86675B4529F319C400B75837 /* 10s.mp3 */,
+				86675B4329F319C400B75837 /* gameLost.mp3 */,
+				86675B4429F319C400B75837 /* pravilnyiyOtvet.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		867A6D2529EDB1F400C9B7A8 /* UIConstants */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,16 +105,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		867A6D3329EEC43200C9B7A8 /* Sounds */ = {
-			isa = PBXGroup;
-			children = (
-				867A6D3829EEC84200C9B7A8 /* 10s.mp3 */,
-				867A6D3C29EF0FD200C9B7A8 /* pravilnyiyOtvet.mp3 */,
-				867A6D3E29EF103400C9B7A8 /* gameLost.mp3 */,
-			);
-			path = Sounds;
-			sourceTree = "<group>";
-		};
 		EB2F773729E9CB61007E87C3 = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +124,7 @@
 		EB2F774229E9CB61007E87C3 /* Crocodile */ = {
 			isa = PBXGroup;
 			children = (
-				867A6D3329EEC43200C9B7A8 /* Sounds */,
+				86675B4229F3193500B75837 /* Sounds */,
 				867A6D2529EDB1F400C9B7A8 /* UIConstants */,
 				EBAAE0B029ED0C1900F039F5 /* TeamModel */,
 				EB2F775E29E9CB84007E87C3 /* MainViewController */,
@@ -277,11 +277,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				867A6D3F29EF103400C9B7A8 /* gameLost.mp3 in Resources */,
-				867A6D3D29EF0FD200C9B7A8 /* pravilnyiyOtvet.mp3 in Resources */,
 				EB2F775029E9CB62007E87C3 /* LaunchScreen.storyboard in Resources */,
 				EB2F774D29E9CB62007E87C3 /* Assets.xcassets in Resources */,
-				867A6D3929EEC84200C9B7A8 /* 10s.mp3 in Resources */,
+				86675B4729F319C400B75837 /* pravilnyiyOtvet.mp3 in Resources */,
+				86675B4629F319C400B75837 /* gameLost.mp3 in Resources */,
+				86675B4829F319C400B75837 /* 10s.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
