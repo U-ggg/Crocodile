@@ -26,6 +26,7 @@ class TeamData {
     ]
     
     func checkName(textField: UITextField) {
+        guard textField.tag > 5 else { return }
         switch textField.tag {
         case 0:
             teamArray[0].name = textField.text ?? "Error"
@@ -40,10 +41,6 @@ class TeamData {
         default:
             teamArray[5].name = textField.text ?? "Error"
         }
-    }
-    
-    func editingAgree() {
-        
     }
     
     func addTeam() {

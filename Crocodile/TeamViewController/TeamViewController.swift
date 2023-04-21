@@ -12,6 +12,11 @@ class TeamViewController: UIViewController {
     
     private let identifier = "Cell"
     
+    private lazy var imageBackgr: UIImageView = {
+        let image = UIImageView(image: UIImage(named: "background"))
+        return image
+    }()
+    
     private lazy var readyButton: UIButton = {
         let button = UIButton()
         button.setTitle("Игроки готовы", for: .normal)
@@ -67,12 +72,19 @@ class TeamViewController: UIViewController {
     }
     
     private func setupViews() {
+        view.addSubview(imageBackgr)
         view.addSubview(collectionView)
         view.addSubview(readyButton)
         view.addSubview(addButton)
         
-        collectionView.snp.makeConstraints { make in
+        imageBackgr.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalTo(addButton.snp.top).inset(10)
         }
         
         readyButton.snp.makeConstraints { make in
@@ -91,16 +103,16 @@ class TeamViewController: UIViewController {
     @objc private func pressedButton(sender: UIButton) {
         if sender.currentTitle == readyButton.titleLabel?.text {
             navigationController?.pushViewController(CategoryViewController(), animated: true)
-        } else if sender.currentTitle == addButton.titleLabel?.text {
-            TeamData.shared.addTeam()
-            collectionView.reloadData()
-        } else {
+        } else if TeamData.shared.teamArray.count == 6 {
             let alert = UIAlertController(title: "Информация",
                                           message: "Это максимальное количетсво команд",
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default)
             alert.addAction(action)
             present(alert, animated: true)
+        } else if sender.currentTitle == addButton.titleLabel?.text {
+            TeamData.shared.addTeam()
+            collectionView.reloadData()
         }
     }
     
@@ -132,7 +144,7 @@ extension TeamViewController: UICollectionViewDataSource {
         cell?.nameTextField.tag = indexPath.row
         cell?.config(model: TeamData.shared.teamArray[indexPath.row])
         cell?.layer.backgroundColor = UIColor.white.cgColor
-        cell?.layer.cornerRadius = 25
+        cell?.layer.cornerRadius = 10
         return cell ?? UICollectionViewCell()
     }
 }
