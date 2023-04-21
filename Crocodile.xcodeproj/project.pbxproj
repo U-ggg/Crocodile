@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D06D0EDF6986E86D7573972 /* Pods_Crocodile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED06E76ABE0DD514FF4D805 /* Pods_Crocodile.framework */; };
+		BFC254B229F0A2C20059F4B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFC254B129F0A2C20059F4B4 /* Assets.xcassets */; };
+		BFC254B429F2D43E0059F4B4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BFC254B329F2D43D0059F4B4 /* README.md */; };
 		EB2F774429E9CB61007E87C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F774329E9CB61007E87C3 /* AppDelegate.swift */; };
 		EB2F774629E9CB61007E87C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F774529E9CB61007E87C3 /* SceneDelegate.swift */; };
 		EB2F774829E9CB61007E87C3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F774729E9CB61007E87C3 /* MainViewController.swift */; };
-		EB2F774D29E9CB62007E87C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB2F774C29E9CB62007E87C3 /* Assets.xcassets */; };
 		EB2F775029E9CB62007E87C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB2F774E29E9CB62007E87C3 /* LaunchScreen.storyboard */; };
 		EB2F776029E9CBD7007E87C3 /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F775F29E9CBD7007E87C3 /* RulesViewController.swift */; };
 		EB2F776229E9CBFA007E87C3 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F776129E9CBFA007E87C3 /* TeamViewController.swift */; };
@@ -23,11 +25,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A05A1033119F32990A6E7B14 /* Pods-Crocodile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Crocodile.debug.xcconfig"; path = "Target Support Files/Pods-Crocodile/Pods-Crocodile.debug.xcconfig"; sourceTree = "<group>"; };
+		BED06E76ABE0DD514FF4D805 /* Pods_Crocodile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Crocodile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFC254AD29EFE3590059F4B4 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFC254B129F0A2C20059F4B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
+		BFC254B329F2D43D0059F4B4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EB2F774029E9CB61007E87C3 /* Crocodile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crocodile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2F774329E9CB61007E87C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB2F774529E9CB61007E87C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EB2F774729E9CB61007E87C3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		EB2F774C29E9CB62007E87C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB2F774F29E9CB62007E87C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB2F775129E9CB62007E87C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB2F775F29E9CBD7007E87C3 /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +44,7 @@
 		EB2F776929E9CCE8007E87C3 /* WrongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongViewController.swift; sourceTree = "<group>"; };
 		EB2F776B29E9CD2B007E87C3 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		EBAAE0B129ED0C2900F039F5 /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
+		EFB9410D80EDDB181C86C604 /* Pods-Crocodile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Crocodile.release.xcconfig"; path = "Target Support Files/Pods-Crocodile/Pods-Crocodile.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,17 +52,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D06D0EDF6986E86D7573972 /* Pods_Crocodile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26AC2375E99907D1E6F643A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFC254AD29EFE3590059F4B4 /* SnapKit.framework */,
+				BED06E76ABE0DD514FF4D805 /* Pods_Crocodile.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9254C980D8B43D2015E11C62 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A05A1033119F32990A6E7B14 /* Pods-Crocodile.debug.xcconfig */,
+				EFB9410D80EDDB181C86C604 /* Pods-Crocodile.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		EB2F773729E9CB61007E87C3 = {
 			isa = PBXGroup;
 			children = (
+				BFC254B329F2D43D0059F4B4 /* README.md */,
 				EB2F774229E9CB61007E87C3 /* Crocodile */,
 				EB2F774129E9CB61007E87C3 /* Products */,
+				9254C980D8B43D2015E11C62 /* Pods */,
+				26AC2375E99907D1E6F643A2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,8 +110,8 @@
 				EB2F775729E9CB6A007E87C3 /* ResultViewController */,
 				EB2F774329E9CB61007E87C3 /* AppDelegate.swift */,
 				EB2F774529E9CB61007E87C3 /* SceneDelegate.swift */,
-				EB2F774C29E9CB62007E87C3 /* Assets.xcassets */,
 				EB2F774E29E9CB62007E87C3 /* LaunchScreen.storyboard */,
+				BFC254B129F0A2C20059F4B4 /* Assets.xcassets */,
 				EB2F775129E9CB62007E87C3 /* Info.plist */,
 			);
 			path = Crocodile;
@@ -167,9 +196,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB2F775429E9CB62007E87C3 /* Build configuration list for PBXNativeTarget "Crocodile" */;
 			buildPhases = (
+				CAA5CEDDCE1E04A361AF87F9 /* [CP] Check Pods Manifest.lock */,
 				EB2F773C29E9CB61007E87C3 /* Sources */,
 				EB2F773D29E9CB61007E87C3 /* Frameworks */,
 				EB2F773E29E9CB61007E87C3 /* Resources */,
+				3BB18D24B6A3952F0041C0F3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -218,12 +249,55 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFC254B429F2D43E0059F4B4 /* README.md in Resources */,
+				BFC254B229F0A2C20059F4B4 /* Assets.xcassets in Resources */,
 				EB2F775029E9CB62007E87C3 /* LaunchScreen.storyboard in Resources */,
-				EB2F774D29E9CB62007E87C3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3BB18D24B6A3952F0041C0F3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Crocodile/Pods-Crocodile-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Crocodile/Pods-Crocodile-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Crocodile/Pods-Crocodile-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CAA5CEDDCE1E04A361AF87F9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Crocodile-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EB2F773C29E9CB61007E87C3 /* Sources */ = {
@@ -308,7 +382,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -362,7 +436,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -374,6 +448,7 @@
 		};
 		EB2F775529E9CB62007E87C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A05A1033119F32990A6E7B14 /* Pods-Crocodile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -401,6 +476,7 @@
 		};
 		EB2F775629E9CB62007E87C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFB9410D80EDDB181C86C604 /* Pods-Crocodile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
