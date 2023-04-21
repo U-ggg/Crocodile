@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		86675B4629F319C400B75837 /* gameLost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86675B4329F319C400B75837 /* gameLost.mp3 */; };
-		86675B4729F319C400B75837 /* pravilnyiyOtvet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86675B4429F319C400B75837 /* pravilnyiyOtvet.mp3 */; };
-		86675B4829F319C400B75837 /* 10s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86675B4529F319C400B75837 /* 10s.mp3 */; };
+		86675B4D29F31FD500B75837 /* gameLost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86675B4A29F31FD500B75837 /* gameLost.mp3 */; };
+		86675B4E29F31FD500B75837 /* 10s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86675B4B29F31FD500B75837 /* 10s.mp3 */; };
+		86675B4F29F31FD500B75837 /* pravilnyiyOtvet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86675B4C29F31FD500B75837 /* pravilnyiyOtvet.mp3 */; };
 		867A6D2829EDB21400C9B7A8 /* UILabel+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867A6D2729EDB21400C9B7A8 /* UILabel+App.swift */; };
 		867A6D2A29EDB53500C9B7A8 /* UIButton+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867A6D2929EDB53500C9B7A8 /* UIButton+App.swift */; };
 		867A6D2C29EDB67400C9B7A8 /* UIStackView+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867A6D2B29EDB67400C9B7A8 /* UIStackView+App.swift */; };
@@ -32,9 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		86675B4329F319C400B75837 /* gameLost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gameLost.mp3; path = ../../../../gameLost.mp3; sourceTree = "<group>"; };
-		86675B4429F319C400B75837 /* pravilnyiyOtvet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = pravilnyiyOtvet.mp3; path = ../../../../pravilnyiyOtvet.mp3; sourceTree = "<group>"; };
-		86675B4529F319C400B75837 /* 10s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = 10s.mp3; path = ../../../../10s.mp3; sourceTree = "<group>"; };
+		86675B4A29F31FD500B75837 /* gameLost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameLost.mp3; sourceTree = "<group>"; };
+		86675B4B29F31FD500B75837 /* 10s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 10s.mp3; sourceTree = "<group>"; };
+		86675B4C29F31FD500B75837 /* pravilnyiyOtvet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pravilnyiyOtvet.mp3; sourceTree = "<group>"; };
 		867A6D2729EDB21400C9B7A8 /* UILabel+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+App.swift"; sourceTree = "<group>"; };
 		867A6D2929EDB53500C9B7A8 /* UIButton+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+App.swift"; sourceTree = "<group>"; };
 		867A6D2B29EDB67400C9B7A8 /* UIStackView+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+App.swift"; sourceTree = "<group>"; };
@@ -72,11 +72,19 @@
 		86675B4229F3193500B75837 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				86675B4529F319C400B75837 /* 10s.mp3 */,
-				86675B4329F319C400B75837 /* gameLost.mp3 */,
-				86675B4429F319C400B75837 /* pravilnyiyOtvet.mp3 */,
+				86675B4B29F31FD500B75837 /* 10s.mp3 */,
+				86675B4A29F31FD500B75837 /* gameLost.mp3 */,
+				86675B4C29F31FD500B75837 /* pravilnyiyOtvet.mp3 */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		86675B4929F31FAF00B75837 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EB2F776529E9CC9C007E87C3 /* GameViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		867A6D2529EDB1F400C9B7A8 /* UIConstants */ = {
@@ -88,13 +96,6 @@
 				867A6D2D29EDC1A900C9B7A8 /* UIColor+App.swift */,
 			);
 			path = UIConstants;
-			sourceTree = "<group>";
-		};
-		867A6D2F29EEB39900C9B7A8 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		867A6D3029EEB3AE00C9B7A8 /* Models */ = {
@@ -172,8 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				867A6D3029EEB3AE00C9B7A8 /* Models */,
-				867A6D2F29EEB39900C9B7A8 /* Controllers */,
-				EB2F776529E9CC9C007E87C3 /* GameViewController.swift */,
+				86675B4929F31FAF00B75837 /* Controllers */,
 			);
 			path = GameViewController;
 			sourceTree = "<group>";
@@ -278,10 +278,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB2F775029E9CB62007E87C3 /* LaunchScreen.storyboard in Resources */,
+				86675B4E29F31FD500B75837 /* 10s.mp3 in Resources */,
 				EB2F774D29E9CB62007E87C3 /* Assets.xcassets in Resources */,
-				86675B4729F319C400B75837 /* pravilnyiyOtvet.mp3 in Resources */,
-				86675B4629F319C400B75837 /* gameLost.mp3 in Resources */,
-				86675B4829F319C400B75837 /* 10s.mp3 in Resources */,
+				86675B4F29F31FD500B75837 /* pravilnyiyOtvet.mp3 in Resources */,
+				86675B4D29F31FD500B75837 /* gameLost.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
