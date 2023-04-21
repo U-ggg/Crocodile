@@ -22,7 +22,7 @@ class TeamViewController: UIViewController {
         button.setTitle("Игроки готовы", for: .normal)
         button.backgroundColor = UIColor(named: "BackgrColor")
         button.layer.cornerRadius = 20
-        button.addTarget(self, action: #selector(pressedButton(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
         return button
     }()
     
@@ -31,7 +31,7 @@ class TeamViewController: UIViewController {
         button.setTitle("Добавить команду", for: .normal)
         button.backgroundColor = UIColor(named: "BackgrColor")
         button.layer.cornerRadius = 20
-        button.addTarget(self, action: #selector(pressedButton(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addTeamPressed), for: .touchUpInside)
         return button
     }()
     
@@ -131,20 +131,21 @@ class TeamViewController: UIViewController {
         collectionView.contentInset.bottom = 0.0
     }
     
-    @objc private func pressedButton(sender: UIButton) {
-        if sender.currentTitle == readyButton.titleLabel?.text {
-            navigationController?.pushViewController(CategoryViewController(), animated: true)
-        } else if TeamData.shared.teamArray.count == 6 {
+    @objc private func addTeamPressed() {
+        if TeamData.shared.teamArray.count == 6 {
             let alert = UIAlertController(title: "Информация",
                                           message: "Это максимальное количетсво команд",
                                           preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default)
             alert.addAction(action)
             present(alert, animated: true)
-        } else if sender.currentTitle == addButton.titleLabel?.text {
-            TeamData.shared.addTeam()
-            collectionView.reloadData()
+        } else {
+            collectionView.insertItems(at: TeamData.shared.addTeam())
         }
+    }
+    
+    @objc private func pressedButton() {
+        navigationController?.pushViewController(CategoryViewController(), animated: true)
     }
 }
 
@@ -157,8 +158,7 @@ extension TeamViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier,
                                                       for: indexPath)as? TeamViewCell
         cell?.delegate = self
-        cell?.closeButton.tag = indexPath.row
-        cell?.nameTextField.tag = indexPath.row
+        cell?.index = indexPath
         cell?.config(model: TeamData.shared.teamArray[indexPath.row])
         cell?.layer.backgroundColor = UIColor.white.cgColor
         cell?.layer.cornerRadius = 10
@@ -167,17 +167,22 @@ extension TeamViewController: UICollectionViewDataSource {
 }
 
 extension TeamViewController: UICollectionViewDelegate, TeamViewCellDelegate {
-    func didSelectDelegate(index: Int) {
-        TeamData.shared.newTeamArray.append(TeamData.shared.teamArray[index])
-        TeamData.shared.teamArray.remove(at: index)
-        TeamData.shared.removeAnimation = index
-        collectionView.reloadData()
+    func updateText(text: String?, indexPath: IndexPath?) {
+        TeamData.shared.teamArray[indexPath!.row].name = text ?? "Error"
+    }
+    
+    func didSelectDelegate(cell: TeamViewCell) {
+        guard let indexPath = collectionView.indexPath(for: cell) else { return }
+        TeamData.shared.newTeamArray.append(TeamData.shared.teamArray[indexPath.row])
+        TeamData.shared.teamArray.remove(at: indexPath.row)
+        collectionView.deleteItems(at: [indexPath])
     }
 }
 
 
 protocol TeamViewCellDelegate: AnyObject {
-    func didSelectDelegate(index: Int)
+    func didSelectDelegate(cell: TeamViewCell)
+    func updateText(text: String?, indexPath: IndexPath?)
 }
 
 

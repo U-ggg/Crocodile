@@ -12,6 +12,8 @@ class TeamViewCell: UICollectionViewCell {
     
     weak var delegate: TeamViewCellDelegate?
     
+    var index: IndexPath?
+    
     private lazy var stackView: UIStackView = {
         let view = UIStackView()
         view.axis = .horizontal
@@ -25,7 +27,7 @@ class TeamViewCell: UICollectionViewCell {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "close"), for: .normal)
         button.isHidden = true
-        button.addTarget(self, action: #selector(deletedCloseButton(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(deletedCloseButton), for: .touchUpInside)
         return button
     }()
     
@@ -41,6 +43,7 @@ class TeamViewCell: UICollectionViewCell {
         textField.clearButtonMode = .whileEditing
         textField.placeholder = "Имя команды"
         textField.delegate = self
+        textField.addTarget(self, action: #selector(textChange(textField:)), for: .editingChanged)
         return textField
     }()
     
@@ -53,18 +56,6 @@ class TeamViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        TeamData.shared.checkName(textField: textField)
-    }
-    
-    private func hideCloseButton() {
-        if TeamData.shared.teamArray.count > 2 {
-            closeButton.isHidden = false
-        } else {
-            closeButton.isHidden = true
-        }
     }
     
     private func setupViews() {
@@ -86,9 +77,21 @@ class TeamViewCell: UICollectionViewCell {
             make.size.equalTo(25)
         }
     }
+         
+    private func hideCloseButton() {
+        if TeamData.shared.teamArray.count > 2 {
+            closeButton.isHidden = false
+        } else {
+            closeButton.isHidden = true
+        }
+    }
     
-    @objc private func deletedCloseButton(sender: UIButton) {
-        delegate?.didSelectDelegate(index: sender.tag)
+    @objc private func textChange(textField: UITextField) {
+        delegate?.updateText(text: textField.text, indexPath: index)
+    }
+    
+    @objc private func deletedCloseButton() {
+        delegate?.didSelectDelegate(cell: self)
     }
     
     public func config(model: TeamModel) {
