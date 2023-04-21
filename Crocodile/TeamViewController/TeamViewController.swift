@@ -56,19 +56,19 @@ class TeamViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
-        notification()
         
     }
     
-    private func notification() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow(notification:)),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide(notification:)),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setKeyboardObservers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        removeKeyboardObservers()
     }
     
     private func setupViews() {
@@ -100,6 +100,37 @@ class TeamViewController: UIViewController {
         }
     }
     
+    private func setKeyboardObservers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(self.willShowKeyboard(_:)),
+                                       name: UIResponder.keyboardWillShowNotification,
+                                       object: nil)
+        notificationCenter.addObserver(self,
+                                       selector: #selector(self.willHideKeyboard(_:)),
+                                       name: UIResponder.keyboardWillHideNotification,
+                                       object: nil)
+    }
+    
+    private func removeKeyboardObservers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self)
+    }
+    
+    @objc private func willShowKeyboard(_ notification: NSNotification) {
+        guard let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height else {
+            return
+        }
+        
+        if collectionView.frame.height > keyboardHeight {
+            collectionView.contentInset.bottom = keyboardHeight
+        }
+    }
+    
+    @objc func willHideKeyboard(_ notification: NSNotification) {
+        collectionView.contentInset.bottom = 0.0
+    }
+    
     @objc private func pressedButton(sender: UIButton) {
         if sender.currentTitle == readyButton.titleLabel?.text {
             navigationController?.pushViewController(CategoryViewController(), animated: true)
@@ -115,21 +146,7 @@ class TeamViewController: UIViewController {
             collectionView.reloadData()
         }
     }
-    
-    
-    @objc private func keyboardWillShow(notification: NSNotification) {
-        if TeamData.shared.teamArray.count > 4 {
-            guard let userInfo = notification.userInfo else { return }
-            guard let keyboardSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-            view.frame.origin.y -= keyboardSize.height / 2
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        view.frame.origin.y = 0
-    }
 }
-
 
 extension TeamViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
