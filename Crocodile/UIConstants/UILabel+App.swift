@@ -22,7 +22,7 @@ extension UILabel {
         self.text = text
         self.font = font
         self.textAlignment = .center
-        self.numberOfLines = 2 
+        self.numberOfLines = 2
         self.adjustsFontSizeToFitWidth = true
     }
 }
