@@ -20,7 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
+<<<<<<< HEAD
         window?.rootViewController = UINavigationController(rootViewController: GameViewController())
+=======
+        window?.rootViewController = UINavigationController(rootViewController: TeamViewController())
+>>>>>>> feature/TeamViewController
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
