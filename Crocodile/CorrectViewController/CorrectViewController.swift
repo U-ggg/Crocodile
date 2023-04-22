@@ -69,7 +69,7 @@ extension CorrectViewController {
             make.bottom.equalTo(view.snp.bottom).inset(46)
             make.leading.equalTo(12)
             make.trailing.equalTo(-12)
-            make.height.equalTo(60)
+            make.height.equalTo(60) 
         }
     }
 }
