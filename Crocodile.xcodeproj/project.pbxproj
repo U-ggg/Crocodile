@@ -69,14 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		86675B4229F3193500B75837 /* Sounds */ = {
+		86675B4229F3193500B75837 /* Soundss */ = {
 			isa = PBXGroup;
 			children = (
 				86675B4B29F31FD500B75837 /* 10s.mp3 */,
 				86675B4A29F31FD500B75837 /* gameLost.mp3 */,
 				86675B4C29F31FD500B75837 /* pravilnyiyOtvet.mp3 */,
 			);
-			path = Sounds;
+			path = Soundss;
 			sourceTree = "<group>";
 		};
 		86675B4929F31FAF00B75837 /* Controllers */ = {
@@ -125,7 +125,7 @@
 		EB2F774229E9CB61007E87C3 /* Crocodile */ = {
 			isa = PBXGroup;
 			children = (
-				86675B4229F3193500B75837 /* Sounds */,
+				86675B4229F3193500B75837 /* Soundss */,
 				867A6D2529EDB1F400C9B7A8 /* UIConstants */,
 				EBAAE0B029ED0C1900F039F5 /* TeamModel */,
 				EB2F775E29E9CB84007E87C3 /* MainViewController */,

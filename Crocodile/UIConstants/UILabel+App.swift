@@ -21,7 +21,7 @@ extension UILabel {
         self.init()
         self.text = text
         self.font = font
-        self.textAlignment = .center
+        self.textAlignment = .center 
         self.numberOfLines = 2
         self.adjustsFontSizeToFitWidth = true
     }

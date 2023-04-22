@@ -23,7 +23,7 @@ class СonditionManager {
         condition.append(Сondition(text: "Объясняй со злостью."))
         condition.append(Сondition(text: "Объясняй с помощью мимики."))
         condition.append(Сondition(text: "Объясняй вульгарно."))
-        condition.append(Сondition(text: "Объясняй сексуально."))
+        condition.append(Сondition(text: "Объясняй сексуально.")) 
     }
     
     func getNextCondition() -> Сondition? {
