@@ -72,6 +72,8 @@ class TeamViewController: UIViewController {
     }
     
     private func setupViews() {
+        title = "Кто играет?"
+        
         view.addSubview(imageBackgr)
         view.addSubview(collectionView)
         view.addSubview(readyButton)
@@ -145,6 +147,16 @@ class TeamViewController: UIViewController {
     }
     
     @objc private func pressedButton() {
+        guard TeamData.shared.checkSameName() else {
+            readyButton.isEnabled = false
+            let alert = UIAlertController(title: "Информация",
+                                          message: "Есть одинаковые имена команд",
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(action)
+            present(alert, animated: true)
+            return
+        }
         navigationController?.pushViewController(CategoryViewController(), animated: true)
     }
 }
@@ -168,6 +180,18 @@ extension TeamViewController: UICollectionViewDataSource {
 
 extension TeamViewController: UICollectionViewDelegate, TeamViewCellDelegate {
     func updateText(text: String?, indexPath: IndexPath?) {
+        guard let textName = text else { return }
+        guard !textName.isEmpty else { 
+            readyButton.isEnabled = false
+            let alert = UIAlertController(title: "Информация",
+                                          message: "Напишите имя команды",
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(action)
+            present(alert, animated: true)
+            return
+        }
+        readyButton.isEnabled = true
         TeamData.shared.teamArray[indexPath!.row].name = text ?? "Error"
     }
     

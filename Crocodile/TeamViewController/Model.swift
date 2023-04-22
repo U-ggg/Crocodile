@@ -24,7 +24,12 @@ class TeamData {
         UIImage(named: "ufo")!,
         UIImage(named: "cowboy")!,
         UIImage(named: "cat")!,
-        UIImage(named: "fat")!
+        UIImage(named: "fat")!,
+        UIImage(named: "ai")!,
+        UIImage(named: "doll")!,
+        UIImage(named: "eagle")!,
+        UIImage(named: "happy")!,
+        UIImage(named: "spiderman")!
     ]
     
     var newTeamArray = [
@@ -42,6 +47,17 @@ class TeamData {
         newTeamArray.remove(at: 0)
         let indexPath = [IndexPath(row: TeamData.shared.teamArray.count - 1, section: 0)]
         return indexPath
+    }
+    
+    func checkSameName() -> Bool {
+        var array = [String]()
+        for i in 0..<teamArray.count {
+            array.append(teamArray[i].name)
+        }
+        if Set(array).count != array.count {
+            return false
+        }
+        return true
     }
 }
 

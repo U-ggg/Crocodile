@@ -95,9 +95,10 @@ class TeamViewCell: UICollectionViewCell {
     }
     
     public func config(model: TeamModel) {
+        hideCloseButton()
         avatarImage.image = model.image
         nameTextField.text = model.name
-        hideCloseButton()
+        
     }
 }
 
