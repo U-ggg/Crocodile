@@ -37,7 +37,7 @@ class ScoreView: UIView {
     let numberLabel: UILabel = {
         let label = UILabel()
         label.text = "1"
-        label.font = .cookieMedium80()
+        //label.font = .cookieMedium80()
         label.textColor = .white
         
         return label
@@ -110,4 +110,5 @@ class ScoreView: UIView {
         }
     }
 }
+
 

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		153E7E6229F32BA7003D40F1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 153E7E6129F32BA7003D40F1 /* SnapKit */; };
+		153E7E6629F3353C003D40F1 /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153E7E6529F3353C003D40F1 /* TeamView.swift */; };
+		153E7E6929F335AD003D40F1 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153E7E6829F335AD003D40F1 /* ScoreView.swift */; };
+		15C3C91D29F3EABC00F262C4 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 15C3C91B29F3EABC00F262C4 /* OFL.txt */; };
+		15C3C91E29F3EABC00F262C4 /* Cookie-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15C3C91C29F3EABC00F262C4 /* Cookie-Regular.ttf */; };
+		15C3C92129F3EAF900F262C4 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C3C92029F3EAF900F262C4 /* CategoryModel.swift */; };
+		15CBC8A929F3E5E30024BA30 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CBC8A829F3E5E30024BA30 /* CategoryCollectionViewCell.swift */; };
 		86675B4D29F31FD500B75837 /* gameLost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86675B4A29F31FD500B75837 /* gameLost.mp3 */; };
 		86675B4E29F31FD500B75837 /* 10s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86675B4B29F31FD500B75837 /* 10s.mp3 */; };
 		86675B4F29F31FD500B75837 /* pravilnyiyOtvet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86675B4C29F31FD500B75837 /* pravilnyiyOtvet.mp3 */; };
@@ -32,6 +39,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		153E7E6529F3353C003D40F1 /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
+		153E7E6829F335AD003D40F1 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		15C3C91B29F3EABC00F262C4 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		15C3C91C29F3EABC00F262C4 /* Cookie-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cookie-Regular.ttf"; sourceTree = "<group>"; };
+		15C3C92029F3EAF900F262C4 /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		15CBC8A829F3E5E30024BA30 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		86675B4A29F31FD500B75837 /* gameLost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameLost.mp3; sourceTree = "<group>"; };
 		86675B4B29F31FD500B75837 /* 10s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 10s.mp3; sourceTree = "<group>"; };
 		86675B4C29F31FD500B75837 /* pravilnyiyOtvet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pravilnyiyOtvet.mp3; sourceTree = "<group>"; };
@@ -63,12 +76,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				153E7E6229F32BA7003D40F1 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		153E7E6429F3351A003D40F1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				153E7E6529F3353C003D40F1 /* TeamView.swift */,
+				153E7E6829F335AD003D40F1 /* ScoreView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		15C3C91A29F3EABC00F262C4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				15C3C91B29F3EABC00F262C4 /* OFL.txt */,
+				15C3C91C29F3EABC00F262C4 /* Cookie-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		15C3C91F29F3EAF900F262C4 /* CategoryModel */ = {
+			isa = PBXGroup;
+			children = (
+				15C3C92029F3EAF900F262C4 /* CategoryModel.swift */,
+			);
+			path = CategoryModel;
+			sourceTree = "<group>";
+		};
 		86675B4229F3193500B75837 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +165,9 @@
 		EB2F774229E9CB61007E87C3 /* Crocodile */ = {
 			isa = PBXGroup;
 			children = (
+				15C3C91F29F3EAF900F262C4 /* CategoryModel */,
+				15C3C91A29F3EABC00F262C4 /* Fonts */,
+				153E7E6429F3351A003D40F1 /* Views */,
 				86675B4229F3193500B75837 /* Sounds */,
 				867A6D2529EDB1F400C9B7A8 /* UIConstants */,
 				EBAAE0B029ED0C1900F039F5 /* TeamModel */,
@@ -181,6 +224,7 @@
 		EB2F775B29E9CB7B007E87C3 /* CategoryViewController */ = {
 			isa = PBXGroup;
 			children = (
+				15CBC8A829F3E5E30024BA30 /* CategoryCollectionViewCell.swift */,
 				EB2F776329E9CC22007E87C3 /* CategoryViewController.swift */,
 			);
 			path = CategoryViewController;
@@ -235,6 +279,9 @@
 			dependencies = (
 			);
 			name = Crocodile;
+			packageProductDependencies = (
+				153E7E6129F32BA7003D40F1 /* SnapKit */,
+			);
 			productName = Crocodile;
 			productReference = EB2F774029E9CB61007E87C3 /* Crocodile.app */;
 			productType = "com.apple.product-type.application";
@@ -263,6 +310,9 @@
 				Base,
 			);
 			mainGroup = EB2F773729E9CB61007E87C3;
+			packageReferences = (
+				153E7E6029F32BA7003D40F1 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = EB2F774129E9CB61007E87C3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -277,7 +327,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15C3C91D29F3EABC00F262C4 /* OFL.txt in Resources */,
 				EB2F775029E9CB62007E87C3 /* LaunchScreen.storyboard in Resources */,
+				15C3C91E29F3EABC00F262C4 /* Cookie-Regular.ttf in Resources */,
 				86675B4E29F31FD500B75837 /* 10s.mp3 in Resources */,
 				EB2F774D29E9CB62007E87C3 /* Assets.xcassets in Resources */,
 				86675B4F29F31FD500B75837 /* pravilnyiyOtvet.mp3 in Resources */,
@@ -293,8 +345,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB2F776629E9CC9C007E87C3 /* GameViewController.swift in Sources */,
+				153E7E6929F335AD003D40F1 /* ScoreView.swift in Sources */,
 				EB2F774829E9CB61007E87C3 /* MainViewController.swift in Sources */,
 				867A6D2E29EDC1A900C9B7A8 /* UIColor+App.swift in Sources */,
+				15C3C92129F3EAF900F262C4 /* CategoryModel.swift in Sources */,
 				867A6D3B29EF0E9800C9B7A8 /* AudioManager.swift in Sources */,
 				EB2F774429E9CB61007E87C3 /* AppDelegate.swift in Sources */,
 				EB2F776029E9CBD7007E87C3 /* RulesViewController.swift in Sources */,
@@ -307,8 +361,10 @@
 				EB2F776A29E9CCE8007E87C3 /* WrongViewController.swift in Sources */,
 				867A6D2A29EDB53500C9B7A8 /* UIButton+App.swift in Sources */,
 				867A6D2C29EDB67400C9B7A8 /* UIStackView+App.swift in Sources */,
+				15CBC8A929F3E5E30024BA30 /* CategoryCollectionViewCell.swift in Sources */,
 				EBAAE0B229ED0C2900F039F5 /* TeamModel.swift in Sources */,
 				EB2F776829E9CCC5007E87C3 /* CorrectViewController.swift in Sources */,
+				153E7E6629F3353C003D40F1 /* TeamView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +574,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		153E7E6029F32BA7003D40F1 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		153E7E6129F32BA7003D40F1 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 153E7E6029F32BA7003D40F1 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EB2F773829E9CB61007E87C3 /* Project object */;
 }

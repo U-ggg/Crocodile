@@ -29,7 +29,7 @@ class TeamView: UIView {
     let numberLabel: UILabel = {
         let label = UILabel()
         label.text = "1"
-        label.font = .cookieMedium65()
+        //label.font = .cookieMedium65()
         
         return label
     }()
