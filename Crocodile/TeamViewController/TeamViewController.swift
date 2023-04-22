@@ -148,7 +148,6 @@ class TeamViewController: UIViewController {
     
     @objc private func pressedButton() {
         guard TeamData.shared.checkSameName() else {
-            readyButton.isEnabled = false
             let alert = UIAlertController(title: "Информация",
                                           message: "Есть одинаковые имена команд",
                                           preferredStyle: .alert)
@@ -163,7 +162,7 @@ class TeamViewController: UIViewController {
 
 extension TeamViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        TeamData.shared.teamArray.count
+        return TeamData.shared.teamArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -176,13 +175,13 @@ extension TeamViewController: UICollectionViewDataSource {
         cell?.layer.cornerRadius = 10
         return cell ?? UICollectionViewCell()
     }
+    
 }
 
 extension TeamViewController: UICollectionViewDelegate, TeamViewCellDelegate {
     func updateText(text: String?, indexPath: IndexPath?) {
         guard let textName = text else { return }
-        guard !textName.isEmpty else { 
-            readyButton.isEnabled = false
+        guard !textName.isEmpty else {
             let alert = UIAlertController(title: "Информация",
                                           message: "Напишите имя команды",
                                           preferredStyle: .alert)
@@ -191,7 +190,6 @@ extension TeamViewController: UICollectionViewDelegate, TeamViewCellDelegate {
             present(alert, animated: true)
             return
         }
-        readyButton.isEnabled = true
         TeamData.shared.teamArray[indexPath!.row].name = text ?? "Error"
     }
     

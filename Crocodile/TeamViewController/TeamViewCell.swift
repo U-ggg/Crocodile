@@ -77,7 +77,7 @@ class TeamViewCell: UICollectionViewCell {
             make.size.equalTo(25)
         }
     }
-         
+    
     private func hideCloseButton() {
         if TeamData.shared.teamArray.count > 2 {
             closeButton.isHidden = false
@@ -95,9 +95,9 @@ class TeamViewCell: UICollectionViewCell {
     }
     
     public func config(model: TeamModel) {
-        hideCloseButton()
         avatarImage.image = model.image
         nameTextField.text = model.name
+        hideCloseButton()
         
     }
 }
