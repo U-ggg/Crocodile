@@ -10,10 +10,10 @@ import UIKit
 extension UIFont {
     
     static func cookieMedium65() ->UIFont? {
-        return UIFont.init(name: "Cookie-Regular", size: 65)
+        return UIFont.init(name: "Cookie-Regularr", size: 65)
     }
     
     static func cookieMedium80() ->UIFont? {
-        return UIFont.init(name: "Cookie-Regular", size: 80)
+        return UIFont.init(name: "Cookie-Regularr", size: 80)
     }
 }

@@ -22,7 +22,7 @@ class TeamView: UIView {
         let label = UILabel()
         label.text = "Ковбои"
         label.font = .systemFont(ofSize: 22)
-        
+         
         return label
     }()
     // MARK: - numberLabel

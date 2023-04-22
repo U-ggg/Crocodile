@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		322396EC29ED74790082F1A1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 322396EB29ED74790082F1A1 /* SnapKit */; };
-		322396F629ED88B30082F1A1 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 322396F429ED88B20082F1A1 /* OFL.txt */; };
-		322396F729ED88B30082F1A1 /* Cookie-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 322396F529ED88B30082F1A1 /* Cookie-Regular.ttf */; };
-		322396FB29ED89380082F1A1 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322396FA29ED89380082F1A1 /* UIFont + Extensions.swift */; };
 		3276E82D29F3D094004FC4AE /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276E82B29F3D094004FC4AE /* ScoreView.swift */; };
 		3276E82E29F3D094004FC4AE /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276E82C29F3D094004FC4AE /* TeamView.swift */; };
+		86675B6329F3D40500B75837 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 86675B6129F3D40500B75837 /* OFL.txt */; };
+		86675B6429F3D40500B75837 /* Cookie-Regularr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86675B6229F3D40500B75837 /* Cookie-Regularr.ttf */; };
+		86675B6829F3D40D00B75837 /* UIFont + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86675B6729F3D40D00B75837 /* UIFont + Extensions.swift */; };
+		86675B6D29F3D44400B75837 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86675B6A29F3D44400B75837 /* GameViewController.swift */; };
+		86675B6E29F3D44400B75837 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86675B6C29F3D44400B75837 /* GameModel.swift */; };
 		EB2F774429E9CB61007E87C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F774329E9CB61007E87C3 /* AppDelegate.swift */; };
 		EB2F774629E9CB61007E87C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F774529E9CB61007E87C3 /* SceneDelegate.swift */; };
 		EB2F774829E9CB61007E87C3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2F774729E9CB61007E87C3 /* MainViewController.swift */; };
@@ -29,11 +30,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		322396F429ED88B20082F1A1 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
-		322396F529ED88B30082F1A1 /* Cookie-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cookie-Regular.ttf"; sourceTree = "<group>"; };
-		322396FA29ED89380082F1A1 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
 		3276E82B29F3D094004FC4AE /* ScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		3276E82C29F3D094004FC4AE /* TeamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
+		86675B6129F3D40500B75837 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		86675B6229F3D40500B75837 /* Cookie-Regularr.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cookie-Regularr.ttf"; sourceTree = "<group>"; };
+		86675B6729F3D40D00B75837 /* UIFont + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont + Extensions.swift"; sourceTree = "<group>"; };
+		86675B6A29F3D44400B75837 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		86675B6C29F3D44400B75837 /* GameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		EB2F774029E9CB61007E87C3 /* Crocodile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crocodile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2F774329E9CB61007E87C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB2F774529E9CB61007E87C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,31 +65,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		322396F329ED886A0082F1A1 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				322396F529ED88B30082F1A1 /* Cookie-Regular.ttf */,
-				322396F429ED88B20082F1A1 /* OFL.txt */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
-		322396F829ED88FB0082F1A1 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				322396F929ED89190082F1A1 /* UIKit */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		322396F929ED89190082F1A1 /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				322396FA29ED89380082F1A1 /* UIFont + Extensions.swift */,
-			);
-			path = UIKit;
-			sourceTree = "<group>";
-		};
 		3276E82A29F3D022004FC4AE /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,11 +74,61 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		86675B5F29F3D3D500B75837 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				EB2F776529E9CC9C007E87C3 /* GameViewController.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		86675B6029F3D40500B75837 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				86675B6129F3D40500B75837 /* OFL.txt */,
+				86675B6229F3D40500B75837 /* Cookie-Regularr.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		86675B6529F3D40D00B75837 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				86675B6629F3D40D00B75837 /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		86675B6629F3D40D00B75837 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				86675B6729F3D40D00B75837 /* UIFont + Extensions.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		86675B6929F3D44400B75837 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				86675B6A29F3D44400B75837 /* GameViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		86675B6B29F3D44400B75837 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				86675B6C29F3D44400B75837 /* GameModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		EB2F773729E9CB61007E87C3 = {
 			isa = PBXGroup;
 			children = (
 				EB2F774229E9CB61007E87C3 /* Crocodile */,
 				EB2F774129E9CB61007E87C3 /* Products */,
+				86675B5F29F3D3D500B75837 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,6 +143,8 @@
 		EB2F774229E9CB61007E87C3 /* Crocodile */ = {
 			isa = PBXGroup;
 			children = (
+				86675B6529F3D40D00B75837 /* Extensions */,
+				86675B6029F3D40500B75837 /* Fonts */,
 				3276E82A29F3D022004FC4AE /* Views */,
 				EBAAE0B029ED0C1900F039F5 /* TeamModel */,
 				EB2F775E29E9CB84007E87C3 /* MainViewController */,
@@ -161,8 +191,8 @@
 		EB2F775A29E9CB76007E87C3 /* GameViewController */ = {
 			isa = PBXGroup;
 			children = (
-				867A6D3029EEB3AE00C9B7A8 /* Models */,
-				86675B4929F31FAF00B75837 /* Controllers */,
+				86675B6B29F3D44400B75837 /* Models */,
+				86675B6929F3D44400B75837 /* Controllers */,
 			);
 			path = GameViewController;
 			sourceTree = "<group>";
@@ -203,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				EBAAE0B129ED0C2900F039F5 /* TeamModel.swift */,
-				867A6D3A29EF0E9800C9B7A8 /* AudioManager.swift */,
 			);
 			path = TeamModel;
 			sourceTree = "<group>";
@@ -266,11 +295,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86675B6329F3D40500B75837 /* OFL.txt in Resources */,
 				EB2F775029E9CB62007E87C3 /* LaunchScreen.storyboard in Resources */,
-				86675B4E29F31FD500B75837 /* 10s.mp3 in Resources */,
 				EB2F774D29E9CB62007E87C3 /* Assets.xcassets in Resources */,
-				86675B4F29F31FD500B75837 /* pravilnyiyOtvet.mp3 in Resources */,
-				86675B4D29F31FD500B75837 /* gameLost.mp3 in Resources */,
+				86675B6429F3D40500B75837 /* Cookie-Regularr.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,20 +311,17 @@
 			files = (
 				EB2F776629E9CC9C007E87C3 /* GameViewController.swift in Sources */,
 				EB2F774829E9CB61007E87C3 /* MainViewController.swift in Sources */,
-				867A6D2E29EDC1A900C9B7A8 /* UIColor+App.swift in Sources */,
-				867A6D3B29EF0E9800C9B7A8 /* AudioManager.swift in Sources */,
 				EB2F774429E9CB61007E87C3 /* AppDelegate.swift in Sources */,
 				EB2F776029E9CBD7007E87C3 /* RulesViewController.swift in Sources */,
-				867A6D3229EEB3C400C9B7A8 /* GameModel.swift in Sources */,
 				EB2F774629E9CB61007E87C3 /* SceneDelegate.swift in Sources */,
+				86675B6E29F3D44400B75837 /* GameModel.swift in Sources */,
 				3276E82E29F3D094004FC4AE /* TeamView.swift in Sources */,
 				EB2F776C29E9CD2B007E87C3 /* ResultViewController.swift in Sources */,
-				867A6D2829EDB21400C9B7A8 /* UILabel+App.swift in Sources */,
 				EB2F776429E9CC22007E87C3 /* CategoryViewController.swift in Sources */,
+				86675B6829F3D40D00B75837 /* UIFont + Extensions.swift in Sources */,
 				EB2F776229E9CBFA007E87C3 /* TeamViewController.swift in Sources */,
+				86675B6D29F3D44400B75837 /* GameViewController.swift in Sources */,
 				EB2F776A29E9CCE8007E87C3 /* WrongViewController.swift in Sources */,
-				867A6D2A29EDB53500C9B7A8 /* UIButton+App.swift in Sources */,
-				867A6D2C29EDB67400C9B7A8 /* UIStackView+App.swift in Sources */,
 				EBAAE0B229ED0C2900F039F5 /* TeamModel.swift in Sources */,
 				3276E82D29F3D094004FC4AE /* ScoreView.swift in Sources */,
 				EB2F776829E9CCC5007E87C3 /* CorrectViewController.swift in Sources */,

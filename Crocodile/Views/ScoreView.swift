@@ -14,7 +14,7 @@ class ScoreView: UIView {
         label.text = "Поздравляем"
         label.font = .systemFont(ofSize: 28, weight: .bold)
         
-        return label
+        return label 
     }()
     // MARK: - secondLabel
     let secondLabel: UILabel = {
