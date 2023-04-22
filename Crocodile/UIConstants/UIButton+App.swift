@@ -16,7 +16,7 @@ class OptionsButton: UIButton {
     convenience init(text: String, color: UIColor) {
         self.init(type: .system)
         setTitle(text, for: .normal)
-        backgroundColor = color.self     
+        backgroundColor = color.self    
         configure()
     }
     

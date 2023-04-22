@@ -21,7 +21,7 @@ class GameViewController: UIViewController {
         static let stackViewButtonTopSpacing: CGFloat = 106.0
         static let stackViewButtonSideSpacing: CGFloat = 10.0
         static let stackViewButtonBottomSpacing: CGFloat = 48.0
-        static let buttonHeightSpacing: CGFloat = 60.0 
+        static let buttonHeightSpacing: CGFloat = 60.0
     }
     
     private let conditionManager = СonditionManager()
