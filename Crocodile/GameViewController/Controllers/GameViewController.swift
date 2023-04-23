@@ -24,6 +24,10 @@ class GameViewController: UIViewController {
         static let buttonHeightSpacing: CGFloat = 60.0
     }
     
+    let teamData = TeamData.shared
+    var curentTeam = 0
+    static var sharedCurentTeam = 0
+
     private let conditionManager = СonditionManager()
     private var categoryModel = CategoryModel(name: "Животные", image: UIImage(named: "animal")!, words: ["кот"])
     public var selectedCategory: CategoryModel?
@@ -114,6 +118,8 @@ class GameViewController: UIViewController {
     
     @objc
     private func trueButtonTapped() {
+        
+        
         player.playSound(soundName: "pravilnyiyOtvet")
 
         trueButtonPressedCount += 1
@@ -134,7 +140,19 @@ class GameViewController: UIViewController {
             if let condition = conditionManager.getNextCondition() {
                 conditionLabel.text = condition.text
                 categoryModel.updateLabelWithRandomWord(category: selectedCategory!, label: randomWordLabel)
-                
+                let сorrectViewController = CorrectViewController()
+                сorrectViewController.modalPresentationStyle = .fullScreen
+                сorrectViewController.teamName = TeamData.shared.teamArray[curentTeam].name
+
+                TeamData.shared.teamArray[curentTeam].score += 1
+                teamData.teamScore = TeamData.shared.teamArray[curentTeam].score
+                if curentTeam < TeamData.shared.teamArray.count - 1 {
+                    curentTeam += 1
+                } else {
+                    curentTeam = 0
+                }
+                GameViewController.sharedCurentTeam = curentTeam
+                self.present(сorrectViewController, animated: true)
                 print("Правильно")
             } else {
                 timer?.invalidate()

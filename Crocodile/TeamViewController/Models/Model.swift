@@ -11,10 +11,11 @@ class TeamData {
     static var shared = TeamData()
     
     var textFieldTag = Int()
+    var teamScore = 0
     
     var teamArray = [
-        TeamModel(name: "Барсики", image: UIImage(named: "cat") ?? UIImage()),
-        TeamModel(name: "Стройняшки", image: UIImage(named: "fat") ?? UIImage()),
+        TeamModel(name: "Барсики", image: UIImage(named: "cat") ?? UIImage(), score: 0),
+        TeamModel(name: "Стройняшки", image: UIImage(named: "fat") ?? UIImage(), score: 0),
     ]
     
     var avatars = [

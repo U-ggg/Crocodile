@@ -9,6 +9,12 @@ import UIKit
 import SnapKit
 
 class CorrectViewController: UIViewController {
+    
+    var curentTeam = GameViewController.sharedCurentTeam
+    var teamData = TeamData.shared
+    var teamName: String = ""
+    var teamScore: Int = 0
+    
     // MARK: - backgroundImageView
     let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -17,25 +23,36 @@ class CorrectViewController: UIViewController {
         return imageView
     }()
     // MARK: - button
-    let button: UIButton = {
+    private lazy var button: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Передать ход", for: .normal)
         button.backgroundColor = UIColor(named: "bgButton")
         button.tintColor = .white
         button.layer.cornerRadius = 10
         button.titleLabel?.font = .systemFont(ofSize: 17)
-        
+        button.addTarget(self, action: #selector(passTappedButton), for: .touchUpInside)
         return button
     }()
+    
     // MARK: - let/var
     let teamView = TeamView()
+    
     let scoreView = ScoreView()
+    
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
         setConstrains()
+        teamView.nameTeam.text = teamName
+        teamView.numberLabel.text = String(teamData.teamScore)
+        teamView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    @objc
+    private func passTappedButton() {
+        dismiss(animated: true, completion: nil)
     }
 }
 extension CorrectViewController {
