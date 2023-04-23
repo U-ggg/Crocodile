@@ -28,8 +28,8 @@ class TeamView: UIView {
     // MARK: - numberLabel
     let numberLabel: UILabel = {
         let label = UILabel()
-        label.text = "1"
-        //label.font = .cookieMedium65()
+        label.text = "\(Int.random(in: 0...6))"
+        label.font = .cookieMedium65()
         
         return label
     }()
@@ -49,6 +49,14 @@ class TeamView: UIView {
         
         setupViews()
         setConstrains()
+    }
+    
+    init(frame: CGRect, model: TeamModel) {
+        super.init(frame: frame)
+        
+        setupViews()
+        setConstrains()
+        numberLabel.text = String(model.score)
     }
     
     required init?(coder: NSCoder) {

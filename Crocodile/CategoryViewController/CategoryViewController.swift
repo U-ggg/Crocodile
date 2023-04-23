@@ -24,7 +24,7 @@ class CategoryViewController: UIViewController {
     
     let backGround: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "backgroung")
+        view.image = UIImage(named: "background")
         view.contentMode = .scaleAspectFill
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -38,7 +38,7 @@ class CategoryViewController: UIViewController {
         return view
     }()
     
-    let startGameButton: UIButton = {
+    private lazy var startGameButton: UIButton = {
         let view = UIButton()
         view.backgroundColor = UIColor(named: "Bottom color")
         view.setTitleColor(.white, for: .normal)
@@ -133,21 +133,11 @@ extension CategoryViewController: UICollectionViewDataSource {
             break
         }
         
-        cell.isSelected = collectionView.indexPathsForSelectedItems?.contains(indexPath) ?? false
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CategoryCollectionViewCell
-        
-        if let selectedIndexPaths = collectionView.indexPathsForSelectedItems,
-           let selectedIndex = selectedIndexPaths.firstIndex(where: { $0 != indexPath }) {
-            let deselectedIndexPath = selectedIndexPaths[selectedIndex]
-            let deselectedCell = collectionView.cellForItem(at: deselectedIndexPath) as! CategoryCollectionViewCell
-            deselectedCell.isSelected = false
-            collectionView.deselectItem(at: deselectedIndexPath, animated: true)
-        }
-        
         cell.isSelected = true
     }
     
@@ -166,7 +156,7 @@ extension CategoryViewController: UICollectionViewDataSource {
         }
         
         let selectedCategory = categories[selectedIndexPath.row]
-        print(selectedCategory) // строка тестовая, убрать после связки с GameViewController()
+        //print(selectedCategory) // строка тестовая, убрать после связки с GameViewController()
         
         //        Раскомментить для связки
         //        let gameViewController = GameViewController()

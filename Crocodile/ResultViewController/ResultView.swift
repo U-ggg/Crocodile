@@ -50,6 +50,7 @@ class ResultView: UIView {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.contentSize = contentSize
+        scrollView.indicatorStyle = .white
         return scrollView
     }()
     
