@@ -156,6 +156,16 @@ class TeamViewController: UIViewController {
             present(alert, animated: true)
             return
         }
+        
+        guard TeamData.shared.checkEmpty() else {
+            let alert = UIAlertController(title: "Информация",
+                                          message: "Некорректное имя команды",
+                                          preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(action)
+            present(alert, animated: true)
+            return
+        }
         navigationController?.pushViewController(CategoryViewController(), animated: true)
     }
 }
@@ -180,16 +190,6 @@ extension TeamViewController: UICollectionViewDataSource {
 
 extension TeamViewController: UICollectionViewDelegate, TeamViewCellDelegate {
     func updateText(text: String?, indexPath: IndexPath?) {
-        guard let textName = text else { return }
-        guard !textName.isEmpty else {
-            let alert = UIAlertController(title: "Информация",
-                                          message: "Напишите имя команды",
-                                          preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default)
-            alert.addAction(action)
-            present(alert, animated: true)
-            return
-        }
         TeamData.shared.teamArray[indexPath!.row].name = text ?? "Error"
     }
     

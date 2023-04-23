@@ -62,7 +62,7 @@ class TeamData {
     
     func checkEmpty() -> Bool {
         for i in 0..<teamArray.count {
-            if teamArray[i].name.isEmpty && teamArray[i].name.contains(" ") {
+            if teamArray[i].name.isEmpty || teamArray[i].name.contains(" ") {
                 return false
             }
         }
