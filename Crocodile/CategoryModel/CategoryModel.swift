@@ -12,6 +12,19 @@ struct CategoryModel {
     let name: String
     let image: UIImage
     let words: [String]
+    var lastWord: String?
+    
+    mutating func updateLabelWithRandomWord(category: CategoryModel, label: UILabel) {
+        var randomIndex = Int.random(in: 0..<category.words.count)
+        var randomWord = category.words[randomIndex]
+        while randomWord == lastWord {
+            randomIndex = Int.random(in: 0..<category.words.count)
+            randomWord = category.words[randomIndex]
+        }
+        lastWord = randomWord
+        label.text = randomWord
+    }
+    
 }
 
 let categories: [CategoryModel] = [
