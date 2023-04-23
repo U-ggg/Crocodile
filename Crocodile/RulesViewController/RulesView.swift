@@ -2,6 +2,8 @@ import UIKit
 
 class RulesView: UIView {
     
+    weak var delegate: RulesViewDelegate?
+    
     func setProperties(){
         addSubview(backgroundImage)
         sendSubviewToBack(backgroundImage)
@@ -23,9 +25,9 @@ class RulesView: UIView {
         stack.contentMode = .scaleToFill
         return stack
     }()
-
+    
     // MARK: - backButton
-
+    
     private lazy var backButton: UIButton = {
         let backButton = UIButton()
         let buttonImage = UIImage(systemName: "chevron.backward")
@@ -36,12 +38,12 @@ class RulesView: UIView {
         return backButton
     }()
     
-    @objc func backButtonIsPressed(sender: UIButton){
-        print("button")
-        }
-
+    @objc func backButtonIsPressed(sender: UIButton) {
+        delegate?.rulesViewDidDismiss()
+    }
+    
     // MARK: - background
-
+    
     private lazy var backgroundImage: UIImageView = {
         let backgroundImage = UIImageView()
         backgroundImage.image = UIImage(named: "background")
@@ -50,9 +52,9 @@ class RulesView: UIView {
         backgroundImage.contentMode = .scaleAspectFill
         return backgroundImage
     }()
-
+    
     // MARK: - rulesLabel
-
+    
     private lazy var rules: UILabel = {
         let rules = UILabel()
         rules.font = .systemFont(ofSize: 18)
@@ -63,11 +65,11 @@ class RulesView: UIView {
         """
         
         В игру играют командами из двух или более человек.
-
+        
         Задача каждого игрока команды - объяснить слово, которое он видит на экране, следуя условиям, которые дополнительно указаны под загаданным словом.
-
+        
         Чем больше слов отгадала команда, тем больше она заработает баллов.
-
+        
         Выигрывает команда, набравшая больше всего баллов.
          На отгадывание слова дается одна минуту. 
         При нарушении правил объяснения слова, ход передается следующей команде.
@@ -76,16 +78,16 @@ class RulesView: UIView {
         rules.sizeToFit()
         return rules
     }()
-
+    
     // MARK: - Constraints
-
+    
     private func setConstraints() {
         stack.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-        stack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-        stack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
-        stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            stack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            stack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10),
         ])
     }
 }

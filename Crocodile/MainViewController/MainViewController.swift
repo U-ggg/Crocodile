@@ -97,11 +97,15 @@ class MainViewController: UIViewController {
     }
     @objc
     private func tappedRulesButton() {
-        print("Правила игры")
+        let rulesViewController = RulesViewController()
+        rulesViewController.modalPresentationStyle = .fullScreen
+        self.present(rulesViewController, animated: true)
     }
     @objc
     private func tappedStartButton() {
-        print("Старт игры")
+        let teamViewController = TeamViewController()
+        teamViewController.modalPresentationStyle = .fullScreen
+        self.present(teamViewController, animated: true)
     }
     @objc
     private func tappedResultButton() {
