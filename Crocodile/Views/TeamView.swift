@@ -1,10 +1,3 @@
-//
-//  TeamView1.swift
-//  Crocodile
-//
-//  Created by Sergey Medvedev on 19.04.2023.
-//
-
 import UIKit
 
 class TeamView: UIView {
@@ -43,6 +36,9 @@ class TeamView: UIView {
             return label
         }()
         // MARK: - let/var
+ 
+ var currentTeam = GameViewController.sharedCurentTeam
+ var teamData = TeamData.shared
         
         // MARK: - init
         override init(frame: CGRect) {
@@ -72,27 +68,31 @@ class TeamView: UIView {
             addSubview(nameTeam)
             addSubview(numberLabel)
             addSubview(scoreLabel)
-            
+   nameTeam.text = teamData.teamArray[currentTeam].name
+   smileImageView.image = teamData.teamArray[currentTeam].image
             
         }
     
-    func updateTeamName(name: String) {
-        nameTeam.text = name
-    }
-
-    func updateTeamScore(score: Int) {
-        numberLabel.text = "\(score)"
-    }
+//    func updateTeamName(name: String) {
+//  nameTeam.text = teamData.teamArray[currentTeam].name
+//    }
+//
+//    func updateTeamScore(score: Int) {
+//        numberLabel.text = "\(score)"
+//    }
     
         // MARK: - setConstrains
         private func setConstrains() {
             smileImageView.snp.makeConstraints { make in
                 make.centerY.equalToSuperview()
                 make.leading.equalToSuperview().inset(15)
+                make.top.equalToSuperview().inset(10)
+                make.bottom.equalToSuperview().inset(10)
+                make.width.equalTo(56)
             }
             nameTeam.snp.makeConstraints { make in
                 make.centerY.equalToSuperview()
-                make.leading.equalTo(smileImageView.snp.trailing).inset(-34)
+                make.leading.equalTo(smileImageView.snp.trailing).inset(-20)
             }
             numberLabel.snp.makeConstraints { make in
                 make.trailing.equalToSuperview().inset(15)

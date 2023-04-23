@@ -8,6 +8,10 @@
 import UIKit
 
 class ScoreView: UIView {
+    
+    var currentTeam = GameViewController.sharedCurentTeam
+    var teamData = TeamData.shared
+    
     // MARK: - winLabel
     let mainLabel: UILabel = {
         let label = UILabel()
@@ -81,6 +85,8 @@ class ScoreView: UIView {
         addSubview(numberLabel)
         addSubview(scoreLabel)
         addSubview(bottomLabel)
+//        nameTeam.text = teamData.teamArray[currentTeam].name
+//        smileImageView.image = teamData.teamArray[currentTeam].image
     }
     // MARK: - setConstrains
     private func setConstrains() {
