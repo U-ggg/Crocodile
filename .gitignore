@@ -12,6 +12,7 @@ DerivedData/
 *.xcworkspace
 !default.xcworkspace
 *.xcuserstate
+.DS_Store
 
 ## Other
 *.xccheckout
