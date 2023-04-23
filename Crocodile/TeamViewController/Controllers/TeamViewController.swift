@@ -166,9 +166,9 @@ class TeamViewController: UIViewController {
             return
         }
         
-        let rulesViewController = RulesViewController()
-        rulesViewController.modalPresentationStyle = .fullScreen
-        self.present(rulesViewController, animated: true)
+        let categoryViewController = CategoryViewController()
+        categoryViewController.modalPresentationStyle = .fullScreen
+        self.present(categoryViewController, animated: true)
         
         navigationController?.pushViewController(CategoryViewController(), animated: true)
     }
