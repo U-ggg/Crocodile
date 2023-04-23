@@ -228,6 +228,30 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		867A9F8229F57E1400A9D8C4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				867A9F8329F57E1B00A9D8C4 /* Cell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		867A9F8329F57E1B00A9D8C4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				15CBC8A829F3E5E30024BA30 /* CategoryCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		867A9F8429F57E2400A9D8C4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				15C3C92829F4B19300F262C4 /* CategoryViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		EB2F773729E9CB61007E87C3 = {
 			isa = PBXGroup;
 			children = (
@@ -308,8 +332,8 @@
 		EB2F775B29E9CB7B007E87C3 /* CategoryViewController */ = {
 			isa = PBXGroup;
 			children = (
-				15C3C92829F4B19300F262C4 /* CategoryViewController.swift */,
-				15CBC8A829F3E5E30024BA30 /* CategoryCollectionViewCell.swift */,
+				867A9F8229F57E1400A9D8C4 /* Views */,
+				867A9F8429F57E2400A9D8C4 /* Controllers */,
 			);
 			path = CategoryViewController;
 			sourceTree = "<group>";

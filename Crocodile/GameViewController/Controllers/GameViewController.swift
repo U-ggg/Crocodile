@@ -25,6 +25,8 @@ class GameViewController: UIViewController {
     }
     
     private let conditionManager = СonditionManager()
+    private var categoryModel = CategoryModel(name: "Животные", image: UIImage(named: "animal")!, words: ["кот"])
+    public var selectedCategory: CategoryModel?
     
     private var timer: Timer?
     private var counter = 0
@@ -47,8 +49,8 @@ class GameViewController: UIViewController {
     }()
     
     private lazy var timerLabel = UILabel(text: "")
-    private lazy var randomWordLabel = UILabel(text: "Картошка")
-    private lazy var conditionLabel = UILabel(text: "объясни с помощью жестов", font: UIFont.italicSystemFont(ofSize: 18))
+    private lazy var randomWordLabel = UILabel(text: "")
+    private lazy var conditionLabel = UILabel(text: "", font: UIFont.italicSystemFont(ofSize: 18))
     
     private lazy var trueButton = OptionsButton(text: "Правильно", color: .specialGreen)
     private lazy var falseButton = OptionsButton(text: "Нарушил правила", color: .specialRed)
@@ -63,6 +65,7 @@ class GameViewController: UIViewController {
         if let condition = conditionManager.getNextCondition() {
                   conditionLabel.text = condition.text
               }
+        categoryModel.updateLabelWithRandomWord(category: selectedCategory!, label: randomWordLabel)
     }
     
     override func viewDidLoad() {
@@ -112,6 +115,7 @@ class GameViewController: UIViewController {
     @objc
     private func trueButtonTapped() {
         player.playSound(soundName: "pravilnyiyOtvet")
+
         trueButtonPressedCount += 1
 
         if trueButtonPressedCount <= 5 {
@@ -129,6 +133,8 @@ class GameViewController: UIViewController {
             
             if let condition = conditionManager.getNextCondition() {
                 conditionLabel.text = condition.text
+                categoryModel.updateLabelWithRandomWord(category: selectedCategory!, label: randomWordLabel)
+                
                 print("Правильно")
             } else {
                 timer?.invalidate()
@@ -152,6 +158,9 @@ class GameViewController: UIViewController {
                     self.crocodileImage.image = UIImage(named: "Image1")
                 }, completion: nil)
             }
+            let wrongViewController = WrongViewController()
+            wrongViewController.modalPresentationStyle = .fullScreen
+            self.present(wrongViewController, animated: true)
         })
         print("Нарушил правила")
     }

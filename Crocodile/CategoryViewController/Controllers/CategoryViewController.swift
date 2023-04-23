@@ -22,12 +22,13 @@ class CategoryViewController: UIViewController {
         return view
     }()
     
-    let backGround: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "backgroung")
-        view.contentMode = .scaleAspectFill
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    private lazy var backgroundImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "background")
+        imageView.frame = view.bounds
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     let categoryCollection: UICollectionView = {
@@ -59,7 +60,7 @@ class CategoryViewController: UIViewController {
     }
     
     func addSubviews() {
-        view.addSubview(backGround)
+        view.addSubview(backgroundImage)
         view.addSubview(titleLabel)
         view.addSubview(categoryCollection)
         view.addSubview(startGameButton)
@@ -71,7 +72,7 @@ class CategoryViewController: UIViewController {
             make.centerX.equalTo(view.snp.centerX)
         }
         
-        backGround.snp.makeConstraints { make in
+        backgroundImage.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
@@ -166,12 +167,11 @@ extension CategoryViewController: UICollectionViewDataSource {
         }
         
         let selectedCategory = categories[selectedIndexPath.row]
-//        print(selectedCategory) // строка тестовая, убрать после связки с GameViewController()
         
-//                Раскомментить для связки
-                let gameViewController = GameViewController()
-                gameViewController.selectedCategory = selectedCategory
-        
-                navigationController?.pushViewController(gameViewController, animated: true)
+        let gameViewController = GameViewController()
+        gameViewController.modalPresentationStyle = .fullScreen
+        gameViewController.selectedCategory = selectedCategory
+        present(gameViewController, animated: true)
+        navigationController?.pushViewController(gameViewController, animated: true)
     }
 }
