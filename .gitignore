@@ -74,3 +74,4 @@ Dependencies/
 fastlane/report.xml
 fastlane/Preview.html
 fastlane
+.DS_Store
