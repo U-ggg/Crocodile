@@ -252,6 +252,22 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		867A9F8529F5867D00A9D8C4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EB2F776729E9CCC5007E87C3 /* CorrectViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		867A9F8729F5869B00A9D8C4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EB2F776929E9CCE8007E87C3 /* WrongViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		EB2F773729E9CB61007E87C3 = {
 			isa = PBXGroup;
 			children = (
@@ -307,7 +323,7 @@
 		EB2F775829E9CB71007E87C3 /* WrongViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EB2F776929E9CCE8007E87C3 /* WrongViewController.swift */,
+				867A9F8729F5869B00A9D8C4 /* Controllers */,
 			);
 			path = WrongViewController;
 			sourceTree = "<group>";
@@ -315,7 +331,7 @@
 		EB2F775929E9CB74007E87C3 /* CorrectViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EB2F776729E9CCC5007E87C3 /* CorrectViewController.swift */,
+				867A9F8529F5867D00A9D8C4 /* Controllers */,
 			);
 			path = CorrectViewController;
 			sourceTree = "<group>";
