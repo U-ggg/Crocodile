@@ -164,6 +164,12 @@ class GameViewController: UIViewController {
     private func falseButtonTapped() {
         player.playSound(soundName: "gameLost")
         
+        if curentTeam < TeamData.shared.teamArray.count - 1 {
+            curentTeam += 1
+        } else {
+            curentTeam = 0
+        }
+        
         UIView.transition(with: self.crocodileImage, duration: 2.0, options: .transitionCrossDissolve, animations: {
             if self.crocodileImage.image == UIImage(named: "Image1") {
                 self.crocodileImage.image = UIImage(named: "Image2")
@@ -181,6 +187,7 @@ class GameViewController: UIViewController {
             self.present(wrongViewController, animated: true)
         })
         print("Нарушил правила")
+       
     }
     
     @objc

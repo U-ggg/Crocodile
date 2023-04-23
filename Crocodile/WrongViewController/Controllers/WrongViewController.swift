@@ -8,6 +8,9 @@
 import UIKit
 
 class WrongViewController: UIViewController {
+    
+    var teamData = TeamData.shared
+    
     // MARK: - backgroundImageView
     let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -16,13 +19,14 @@ class WrongViewController: UIViewController {
         return imageView
     }()
     // MARK: - button
-    let button: UIButton = {
+    private lazy var button: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Передать ход", for: .normal)
         button.backgroundColor = UIColor(named: "bgButton")
         button.tintColor = .white
         button.layer.cornerRadius = 10
         button.titleLabel?.font = .systemFont(ofSize: 17)
+        button.addTarget(self, action: #selector(passTappedButton), for: .touchUpInside)
         
         return button
     }()
@@ -35,13 +39,18 @@ class WrongViewController: UIViewController {
         setupViews()
         setConstrains()
     }
+    
+    @objc
+    private func passTappedButton() {
+        dismiss(animated: true, completion: nil)
+    }
 }
 extension WrongViewController {
     // MARK: - setupViews
     private func setupViews() {
         view.addSubview(backgroundImageView)
         view.addSubview(teamView)
-        teamView.numberLabel.text = "2"
+//        scoreView.numberLabel.text = String(teamData.teamScore)
         view.addSubview(scoreView)
         scoreView.backgroundColor = UIColor(named: "red")
         scoreView.mainLabel.text = "УВЫ И АХ"
