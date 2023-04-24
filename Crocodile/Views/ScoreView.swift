@@ -9,9 +9,6 @@ import UIKit
 
 class ScoreView: UIView {
     
-    var currentTeam = GameViewController.sharedCurentTeam
-    var teamData = TeamData.shared
-    
     // MARK: - winLabel
     let mainLabel: UILabel = {
         let label = UILabel()
@@ -49,16 +46,16 @@ class ScoreView: UIView {
     // MARK: - scoreLabel
     let scoreLabel: UILabel = {
         let label = UILabel()
-        label.text = "Очки"
+        label.text = "Очко"
         label.font = .systemFont(ofSize: 15)
         label.textColor = UIColor(red: 1, green: 0.901, blue: 0.008, alpha: 1)
         
         return label
     }()
     // MARK: - bottomLabel
-    let bottomLabel: UILabel = {
+    var bottomLabel: UILabel = {
         let label = UILabel()
-        label.text = "Следующий ход - 'Стройняшки'"
+        label.text = " "
         label.font = .systemFont(ofSize: 16)
         
         return label
@@ -69,7 +66,9 @@ class ScoreView: UIView {
         
         setupViews()
         setConstrains()
+        
     }
+
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -77,7 +76,7 @@ class ScoreView: UIView {
     // MARK: - setupViews
     private func setupViews() {
         backgroundColor = UIColor(named: "bgButton")
-        layer.cornerRadius = 20
+        layer.cornerRadius = 10
         
         addSubview(mainLabel)
         addSubview(secondLabel)
@@ -85,8 +84,6 @@ class ScoreView: UIView {
         addSubview(numberLabel)
         addSubview(scoreLabel)
         addSubview(bottomLabel)
-//        nameTeam.text = teamData.teamArray[currentTeam].name
-//        smileImageView.image = teamData.teamArray[currentTeam].image
     }
     // MARK: - setConstrains
     private func setConstrains() {

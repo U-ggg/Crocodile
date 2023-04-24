@@ -4,6 +4,7 @@
 //
 //  Created by sidzhe on 18.04.2023.
 //
+
 import UIKit
 import SnapKit
 
@@ -107,3 +108,4 @@ extension TeamViewCell: UITextFieldDelegate {
         return true
     }
 }
+

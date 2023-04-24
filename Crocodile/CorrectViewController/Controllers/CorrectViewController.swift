@@ -8,12 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol ChangeDelegate: AnyObject {
+    func changeTeam()
+    func startTimer()
+}
+
 class CorrectViewController: UIViewController {
     
-    var curentTeam = GameViewController.sharedCurentTeam
-    var teamData = TeamData.shared
-    var teamName: String = ""
-    var teamScore: Int = 0
+    weak var delegate: ChangeDelegate?
     
     // MARK: - backgroundImageView
     let backgroundImageView: UIImageView = {
@@ -30,29 +32,25 @@ class CorrectViewController: UIViewController {
         button.tintColor = .white
         button.layer.cornerRadius = 10
         button.titleLabel?.font = .systemFont(ofSize: 17)
-        button.addTarget(self, action: #selector(passTappedButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(backView), for: .touchUpInside)
         return button
     }()
     
+    @objc  func backView() {
+        dismiss(animated: true)
+        delegate?.changeTeam()
+        delegate?.startTimer()
+    }
+    
     // MARK: - let/var
     let teamView = TeamView()
-    
     let scoreView = ScoreView()
-    
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
         setConstrains()
-        teamView.nameTeam.text = teamName
-        teamView.numberLabel.text = String(teamData.teamScore)
-        teamView.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    @objc
-    private func passTappedButton() {
-        dismiss(animated: true, completion: nil)
     }
 }
 extension CorrectViewController {

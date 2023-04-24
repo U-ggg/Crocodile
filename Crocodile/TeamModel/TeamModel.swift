@@ -11,5 +11,12 @@ struct TeamModel {
     var name: String
     var image: UIImage
     var score = 0
+    
+    mutating func addScore() {
+        score += 1
+    }
+    
+    mutating func nullScore() {
+        score = 0
+    }
 }
-

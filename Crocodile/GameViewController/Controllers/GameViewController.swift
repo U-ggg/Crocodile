@@ -8,7 +8,7 @@
 import UIKit
 import AVFAudio
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, ChangeDelegate {
     enum Constants {
         static let crocodileImageTopSpacing: CGFloat = 56.0
         static let crocodileImageSize: CGFloat = 230.0
@@ -24,10 +24,6 @@ class GameViewController: UIViewController {
         static let buttonHeightSpacing: CGFloat = 60.0
     }
     
-    let teamData = TeamData.shared
-    var curentTeam = 0
-    static var sharedCurentTeam = 0
-
     private let conditionManager = СonditionManager()
     private var categoryModel = CategoryModel(name: "Животные", image: UIImage(named: "animal")!, words: ["кот"])
     public var selectedCategory: CategoryModel?
@@ -37,6 +33,11 @@ class GameViewController: UIViewController {
     private var trueButtonPressedCount = 0
     private var audioPlayer: AVAudioPlayer?
     private let player = AudioManager()
+    
+    var maxQestionNumber = TeamData.shared.teamArray.count * 2 //количество слов на 1 команду
+    var question = 0
+    var teamNumber = 0
+    var nextTeamNumber = 1
     
     private lazy var backgroundImage: UIImageView = {
         let imageView = UIImageView()
@@ -78,7 +79,6 @@ class GameViewController: UIViewController {
         setupViews()
         setConstraints()
         startTimer()
-        updateTimerLabel()
     }
     
     private func setupViews() {
@@ -96,80 +96,89 @@ class GameViewController: UIViewController {
         view.addSubview(stackViewButton)
     }
     
-    private func startTimer() {
+    internal func startTimer() {
         counter = 61 // устанавливаем начальное значение счетчика
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimerLabel), userInfo: nil, repeats: true)
     }
     
     @objc
     private func updateTimerLabel() {
-        counter -= 1 // уменьшаем значение счетчика на 1
-        if counter == 10 {
-            player.playSound(soundName: "10s") // воспроизводим звук, когда на таймере остается 10 секунд
-            }
-
-        if counter == 0 {
+        if counter > 0 {
+            counter -= 1 // уменьшаем значение счетчика на 1
+            let minutes = counter / 60 // вычисляем минуты
+            let seconds = counter % 60 // вычисляем секунды
+            timerLabel.text = String(format: "%02d:%02d", minutes, seconds) // форматируем строку с временем
+        } else {
             timer?.invalidate() // останавливаем таймер, когда счетчик достигнет 0
         }
-        let minutes = counter / 60 // вычисляем минуты
-        let seconds = counter % 60 // вычисляем секунды
-        timerLabel.text = String(format: "%02d:%02d", minutes, seconds) // форматируем строку с временем
+        
+        if counter == 10 {
+            player.playSound(soundName: "10s") // воспроизводим звук, когда на таймере остается 10 секунд
+        }
     }
+    
+
+    
+    func changeTeam() {
+        teamNumber += 1
+        if teamNumber > TeamData.shared.teamArray.count - 1 {
+            teamNumber = 0
+        }
+        nextTeamNumber += 1
+        if nextTeamNumber > TeamData.shared.teamArray.count - 1 {
+            nextTeamNumber = 0
+        }
+    }
+    
     
     @objc
     private func trueButtonTapped() {
-        
-        
+        //Воспроизведение звука
         player.playSound(soundName: "pravilnyiyOtvet")
 
-        trueButtonPressedCount += 1
+        //Добавление очка команде
+        TeamData.shared.teamArray[teamNumber].addScore()
+        
+        //остановка таймера
+        timer?.invalidate()
 
-        if trueButtonPressedCount <= 5 {
-            timer?.invalidate()
-            counter = 61
-            startTimer()
-            
-            UIView.animate(withDuration: 0.5, animations: {
-                self.crocodileImage.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
-            }, completion: { _ in
-                UIView.animate(withDuration: 0.5) {
-                    self.crocodileImage.transform = CGAffineTransform.identity
-                }
-            })
-            
-            if let condition = conditionManager.getNextCondition() {
-                conditionLabel.text = condition.text
-                categoryModel.updateLabelWithRandomWord(category: selectedCategory!, label: randomWordLabel)
-                let сorrectViewController = CorrectViewController()
-                сorrectViewController.modalPresentationStyle = .fullScreen
-                сorrectViewController.teamName = TeamData.shared.teamArray[curentTeam].name
-
-                TeamData.shared.teamArray[curentTeam].score += 1
-                teamData.teamScore = TeamData.shared.teamArray[curentTeam].score
-                if curentTeam < TeamData.shared.teamArray.count - 1 {
-                    curentTeam += 1
-                } else {
-                    curentTeam = 0
-                }
-                GameViewController.sharedCurentTeam = curentTeam
-                self.present(сorrectViewController, animated: true)
-                print("Правильно")
-            } else {
-                timer?.invalidate()
+        //анимация
+        UIView.animate(withDuration: 0.5, animations: {
+            self.crocodileImage.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.5) {
+                self.crocodileImage.transform = CGAffineTransform.identity
             }
-        }
+            // показ экрана
+            if self.question < self.maxQestionNumber {
+                let correctVC = CorrectViewController()
+                correctVC.delegate = self
+                correctVC.teamView.smileImageView.image = TeamData.shared.teamArray[self.teamNumber].image
+                correctVC.teamView.nameTeam.text = TeamData.shared.teamArray[self.teamNumber].name
+                correctVC.teamView.numberLabel.text = (String(TeamData.shared.teamArray[self.teamNumber].score))
+                correctVC.scoreView.bottomLabel.text = "Следующая команда - \(TeamData.shared.teamArray[self.nextTeamNumber].name)"
+                correctVC.modalPresentationStyle = .fullScreen
+                self.present(correctVC, animated: true)
+            } else {
+                print(TeamData.shared.teamArray)
+                let resultVC = ResultViewController()
+                resultVC.teams = TeamData.shared.teamArray
+                resultVC.modalPresentationStyle = .fullScreen
+                self.present(resultVC, animated: true)
+            }
+        })
+        question += 1
     }
     
     @objc
     private func falseButtonTapped() {
+        //Воспроизведение звука
         player.playSound(soundName: "gameLost")
         
-        if curentTeam < TeamData.shared.teamArray.count - 1 {
-            curentTeam += 1
-        } else {
-            curentTeam = 0
-        }
-        
+        //остановка таймера
+        timer?.invalidate()
+
+        //анимация
         UIView.transition(with: self.crocodileImage, duration: 2.0, options: .transitionCrossDissolve, animations: {
             if self.crocodileImage.image == UIImage(named: "Image1") {
                 self.crocodileImage.image = UIImage(named: "Image2")
@@ -182,12 +191,25 @@ class GameViewController: UIViewController {
                     self.crocodileImage.image = UIImage(named: "Image1")
                 }, completion: nil)
             }
-            let wrongViewController = WrongViewController()
-            wrongViewController.modalPresentationStyle = .fullScreen
-            self.present(wrongViewController, animated: true)
+            if self.question < self.maxQestionNumber {
+                let wrongVC = WrongViewController()
+                wrongVC.delegate = self
+                wrongVC.modalPresentationStyle = .fullScreen
+                wrongVC.teamView.smileImageView.image = TeamData.shared.teamArray[self.teamNumber].image
+                wrongVC.teamView.nameTeam.text = TeamData.shared.teamArray[self.teamNumber].name
+                wrongVC.teamView.numberLabel.text = (String(TeamData.shared.teamArray[self.teamNumber].score))
+                wrongVC.scoreView.bottomLabel.text = "Следующая команда - \(TeamData.shared.teamArray[self.nextTeamNumber].name)"
+                self.present(wrongVC, animated: true)
+            } else {
+                print(TeamData.shared.teamArray)
+                let resultVC = ResultViewController()
+                resultVC.teams = TeamData.shared.teamArray
+                resultVC.modalPresentationStyle = .fullScreen
+                self.present(resultVC, animated: true)
+            }
         })
-        print("Нарушил правила")
-       
+
+        question += 1
     }
     
     @objc
@@ -195,7 +217,13 @@ class GameViewController: UIViewController {
         let alertController = UIAlertController(title: "Сбросить игру?", message: "Вы хотите сбросить вашу игру и вернуться в главное меню?", preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Да", style: .default) { (action) in
-            // Обработка нажатия кнопки "Да"
+            self.timer?.invalidate()
+                       for i in 0...TeamData.shared.teamArray.count - 1 {
+                           TeamData.shared.teamArray[i].nullScore()
+                       }
+                       let mainVC = MainViewController()
+                       mainVC.modalPresentationStyle = .fullScreen
+                       self.present(mainVC, animated: true)
         }
         alertController.addAction(okAction)
         okAction.setValue(UIColor.red, forKey: "titleTextColor")
