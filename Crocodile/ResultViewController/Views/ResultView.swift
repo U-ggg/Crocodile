@@ -151,5 +151,6 @@ extension ResultView {
         let mainViewController = MainViewController()
         mainViewController.modalPresentationStyle = .fullScreen
         viewController.present(mainViewController, animated: true)
+        TeamData.shared.resetTeamArray()
     }
 }

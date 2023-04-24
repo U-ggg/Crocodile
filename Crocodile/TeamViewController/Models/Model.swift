@@ -68,4 +68,11 @@ class TeamData {
         }
         return true
     }
+    
+    func resetTeamArray() {
+        teamArray = [
+            TeamModel(name: "Барсики", image: UIImage(named: "cat") ?? UIImage()),
+            TeamModel(name: "Стройняшки", image: UIImage(named: "fat") ?? UIImage())
+        ]
+    }
 }
