@@ -109,7 +109,9 @@ class MainViewController: UIViewController {
     }
     @objc
     private func tappedResultButton() {
-        print("Результаты")
+        let resultViewController = ResultViewController()
+        resultViewController.modalPresentationStyle = .fullScreen
+        self.present(resultViewController, animated: true)
     }
 }
 

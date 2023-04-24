@@ -20,7 +20,7 @@ class TeamViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Игроки готовы", for: .normal)
         button.backgroundColor = UIColor(named: "BackgrColor")
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(pressedButton), for: .touchUpInside)
         return button
     }()
@@ -29,7 +29,7 @@ class TeamViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Добавить команду", for: .normal)
         button.backgroundColor = UIColor(named: "BackgrColor")
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(addTeamPressed), for: .touchUpInside)
         return button
     }()
@@ -51,10 +51,27 @@ class TeamViewController: UIViewController {
         return flowLayout
     }()
     
+    private lazy var playLabel = UILabel(text: "Кто играет?")
+    
+    private lazy var backButton: UIButton = {
+        let backButton = UIButton()
+        let buttonImage = UIImage(systemName: "chevron.backward")
+        backButton.setImage(buttonImage, for: .normal)
+        backButton.tintColor = UIColor(red: 0.129, green: 0.588, blue: 0.953, alpha: 1)
+        backButton.frame = CGRect(x: 0, y: 0, width: 11, height: 19)
+        backButton.addTarget(self, action: #selector(backButtonIsPressed(sender:)), for: .touchUpInside)
+        return backButton
+    }()
+    
+    @objc func backButtonIsPressed(sender: UIButton) {
+        dismiss(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
+        
         
     }
     
@@ -74,16 +91,29 @@ class TeamViewController: UIViewController {
         title = "Кто играет?"
         
         view.addSubview(imageBackgr)
+        view.addSubview(backButton)
+        view.addSubview(playLabel)
         view.addSubview(collectionView)
         view.addSubview(readyButton)
         view.addSubview(addButton)
+        
+        backButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(15)
+            make.left.equalToSuperview().inset(20)
+        }
+        
+        playLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(1)
+            make.left.equalTo(backButton.snp.left).inset(50)
+            make.right.equalTo(view.snp.right).inset(50)
+        }
         
         imageBackgr.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalTo(playLabel.snp.bottom).offset(40)
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(addButton.snp.top).inset(10)
         }
@@ -169,7 +199,6 @@ class TeamViewController: UIViewController {
         let categoryViewController = CategoryViewController()
         categoryViewController.modalPresentationStyle = .fullScreen
         self.present(categoryViewController, animated: true)
-        
         navigationController?.pushViewController(CategoryViewController(), animated: true)
     }
 }

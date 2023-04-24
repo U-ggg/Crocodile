@@ -41,9 +41,6 @@ class ResultView: UIView {
         return repeatButton
     }()
     
-    @objc func repeatButtonPressed() {
-        print("PRESSED!")
-    }
     
     // MARK: - scroll
     
@@ -145,5 +142,14 @@ class ResultView: UIView {
                 teamView.heightAnchor.constraint(equalToConstant: teamView.frame.height)
             ])
         }
+    }
+}
+
+extension ResultView {
+    @objc private func repeatButtonPressed() {
+        let viewController = self.next as! UIViewController
+        let mainViewController = MainViewController()
+        mainViewController.modalPresentationStyle = .fullScreen
+        viewController.present(mainViewController, animated: true)
     }
 }

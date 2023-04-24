@@ -12,7 +12,6 @@ class CategoryViewController: UIViewController {
     
     let categoryCellIdentifire = "categoryCell"
     
-    
     let titleLabel: UILabel = {
         let view = UILabel()
         view.text = "Категории"
@@ -51,22 +50,45 @@ class CategoryViewController: UIViewController {
         return view
     }()
     
+    private lazy var backButton: UIButton = {
+        let backButton = UIButton()
+        let buttonImage = UIImage(systemName: "chevron.backward")
+        backButton.setImage(buttonImage, for: .normal)
+        backButton.tintColor = UIColor(red: 0.129, green: 0.588, blue: 0.953, alpha: 1)
+        backButton.frame = CGRect(x: 0, y: 0, width: 11, height: 19)
+        backButton.addTarget(self, action: #selector(backButtonIsPressed(sender:)), for: .touchUpInside)
+        return backButton
+    }()
+    
+    @objc func backButtonIsPressed(sender: UIButton) {
+        dismiss(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         categoryCollection.backgroundColor = .clear
         addSubviews()
         setupCollectionView()
         setupConstraints()
+        
     }
     
     func addSubviews() {
         view.addSubview(backgroundImage)
+        view.addSubview(backButton)
         view.addSubview(titleLabel)
         view.addSubview(categoryCollection)
         view.addSubview(startGameButton)
     }
     
     func setupConstraints() {
+        
+        backButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            make.left.equalToSuperview().inset(20)
+        }
+        
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.centerX.equalTo(view.snp.centerX)
@@ -133,21 +155,11 @@ extension CategoryViewController: UICollectionViewDataSource {
         default:
             break
         }
-        
-        cell.isSelected = collectionView.indexPathsForSelectedItems?.contains(indexPath) ?? false
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CategoryCollectionViewCell
-        
-        if let selectedIndexPaths = collectionView.indexPathsForSelectedItems,
-           let selectedIndex = selectedIndexPaths.firstIndex(where: { $0 != indexPath }) {
-            let deselectedIndexPath = selectedIndexPaths[selectedIndex]
-            let deselectedCell = collectionView.cellForItem(at: deselectedIndexPath) as! CategoryCollectionViewCell
-            deselectedCell.isSelected = false
-            collectionView.deselectItem(at: deselectedIndexPath, animated: true)
-        }
         
         cell.isSelected = true
     }

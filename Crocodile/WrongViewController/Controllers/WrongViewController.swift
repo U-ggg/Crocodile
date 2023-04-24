@@ -9,8 +9,7 @@ import UIKit
 
 class WrongViewController: UIViewController {
     
-    var teamData = TeamData.shared
-    
+    weak var delegate: ChangeDelegate?
     // MARK: - backgroundImageView
     let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -26,10 +25,15 @@ class WrongViewController: UIViewController {
         button.tintColor = .white
         button.layer.cornerRadius = 10
         button.titleLabel?.font = .systemFont(ofSize: 17)
-        button.addTarget(self, action: #selector(passTappedButton), for: .touchUpInside)
-        
+        button.addTarget(self, action: #selector(backView), for: .touchUpInside)
         return button
     }()
+    
+    @objc  func backView() {
+        dismiss(animated: true)
+        delegate?.changeTeam()
+    }
+    
     // MARK: - let/var
     let teamView = TeamView()
     let scoreView = ScoreView()
@@ -39,22 +43,16 @@ class WrongViewController: UIViewController {
         setupViews()
         setConstrains()
     }
-    
-    @objc
-    private func passTappedButton() {
-        dismiss(animated: true, completion: nil)
-    }
 }
 extension WrongViewController {
     // MARK: - setupViews
     private func setupViews() {
         view.addSubview(backgroundImageView)
         view.addSubview(teamView)
-//        scoreView.numberLabel.text = String(teamData.teamScore)
         view.addSubview(scoreView)
         scoreView.backgroundColor = UIColor(named: "red")
         scoreView.mainLabel.text = "УВЫ И АХ"
-        scoreView.secondLabel.text = "Вы не отгадали слово и не получаете \n очков"
+        scoreView.secondLabel.text = "Вы не отгадали слово и не получаете очки"
         scoreView.scoreImageView.image = UIImage(named: "circle")
         scoreView.numberLabel.text = "0"
         scoreView.scoreLabel.isHidden = true

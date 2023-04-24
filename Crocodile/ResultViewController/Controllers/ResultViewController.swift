@@ -2,20 +2,21 @@ import UIKit
 
 class ResultViewController: UIViewController {
     
-    var teams: [TeamModel] = []
+    var teams: [TeamModel]!
     var teamViews: [UIView] = []
     var resultView = ResultView()
     
     // ВАЖНО!!! у teamView нужно выставить frame высоту 96 (> 0)
     override func viewDidLoad() {
         super.viewDidLoad()
-        generateForTest() // TestMethod
+//        generateForTest() // TestMethod
+        setTeams(teams)
         resultView = ResultView()
         resultView.setElements(teams: teamViews)
         view = resultView
     }
     
-    func setTeams(_ teams: [TeamModel]) {
+     func setTeams(_ teams: [TeamModel]) {
         self.teams = teams
         self.teams.sort{$0.score > $1.score}
         setTeamViews()
@@ -34,14 +35,14 @@ class ResultViewController: UIViewController {
             return teamView
         }
 
-    // MARK: - TEST METHODS
-    
-    private func generateForTest() {
-        var testTeams = [TeamModel]()
-        for _ in 0...9 {
-                    let model = TeamModel(name: "Name", image: UIImage(), score: Int.random(in: 0...7))
-                    testTeams.append(model)
-                }
-        setTeams(testTeams)
-    }
+//    // MARK: - TEST METHODS
+//
+//    private func generateForTest() {
+//        var testTeams = [TeamModel]()
+//        for _ in 0...9 {
+//                    let model = TeamModel(name: "Name", image: UIImage(), score: Int.random(in: 0...7))
+//                    testTeams.append(model)
+//                }
+//        setTeams(testTeams)
+//    }
 }

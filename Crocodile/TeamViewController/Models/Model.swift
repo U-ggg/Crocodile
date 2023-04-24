@@ -4,6 +4,7 @@
 //
 //  Created by sidzhe on 19.04.2023.
 //
+
 import UIKit
 
 class TeamData {
@@ -11,11 +12,10 @@ class TeamData {
     static var shared = TeamData()
     
     var textFieldTag = Int()
-    var teamScore = 0
     
     var teamArray = [
-        TeamModel(name: "Барсики", image: UIImage(named: "cat") ?? UIImage(), score: 0),
-        TeamModel(name: "Стройняшки", image: UIImage(named: "fat") ?? UIImage(), score: 0),
+        TeamModel(name: "Барсики", image: UIImage(named: "cat") ?? UIImage()),
+        TeamModel(name: "Стройняшки", image: UIImage(named: "fat") ?? UIImage()),
     ]
     
     var avatars = [
