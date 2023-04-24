@@ -224,6 +224,7 @@ class GameViewController: UIViewController, ChangeDelegate {
                        let mainVC = MainViewController()
                        mainVC.modalPresentationStyle = .fullScreen
                        self.present(mainVC, animated: true)
+            TeamData.shared.resetTeamArray()
         }
         alertController.addAction(okAction)
         okAction.setValue(UIColor.red, forKey: "titleTextColor")
