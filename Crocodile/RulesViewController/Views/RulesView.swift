@@ -4,16 +4,25 @@ class RulesView: UIView {
     
     weak var delegate: RulesViewDelegate?
     
-    func setProperties(){
-        addSubview(backgroundImage)
-        sendSubviewToBack(backgroundImage)
-        
-        addSubview(stack)
-        stack.addArrangedSubview(backButton)
-        stack.addArrangedSubview(rules)
-        
-        setConstraints()
+    init(delegate: RulesViewDelegate? = nil) {
+        super.init(frame: .zero)
+        self.delegate = delegate
+        self.setProperties()
+        self.setConstraints()
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - scrollView
+    
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = true
+        return scrollView
+    }()
     
     // MARK: - stack
     
@@ -63,7 +72,6 @@ class RulesView: UIView {
         rules.lineBreakMode = .byWordWrapping
         rules.text =
         """
-        
         В игру играют командами из двух или более человек.
         
         Задача каждого игрока команды - объяснить слово, которое он видит на экране, следуя условиям, которые дополнительно указаны под загаданным словом.
@@ -71,7 +79,21 @@ class RulesView: UIView {
         Чем больше слов отгадала команда, тем больше она заработает баллов.
         
         Выигрывает команда, набравшая больше всего баллов.
-         На отгадывание слова дается одна минуту. 
+        
+        На отгадывание слова дается одна минуту.
+
+        При нарушении правил объяснения слова, ход передается следующей команде.
+        
+        В игру играют командами из двух или более человек.
+                
+        Задача каждого игрока команды - объяснить слово, которое он видит на экране, следуя условиям, которые дополнительно указаны под загаданным словом.
+                
+        Чем больше слов отгадала команда, тем больше она заработает баллов.
+                
+        Выигрывает команда, набравшая больше всего баллов.
+                
+        На отгадывание слова дается одна минуту.
+
         При нарушении правил объяснения слова, ход передается следующей команде.
         
         """
@@ -79,15 +101,29 @@ class RulesView: UIView {
         return rules
     }()
     
+    func setProperties() {
+        addSubview(backgroundImage)
+        addSubview(scrollView)
+        
+        scrollView.addSubview(stack)
+        stack.addArrangedSubview(backButton)
+        stack.addArrangedSubview(rules)
+        
+    }
+    
     // MARK: - Constraints
     
     private func setConstraints() {
-        stack.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        scrollView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            stack.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            stack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -10),
-        ])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10).isActive = true
+        stack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10).isActive = true
+        stack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -10).isActive = true
+        stack.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -10).isActive = true
+        stack.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -20).isActive = true
     }
 }

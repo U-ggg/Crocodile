@@ -383,8 +383,8 @@
 		EB2F775D29E9CB81007E87C3 /* RulesViewController */ = {
 			isa = PBXGroup;
 			children = (
-				867A9F7E29F57B2E00A9D8C4 /* Controllers */,
 				867A9F7C29F57B2E00A9D8C4 /* Views */,
+				867A9F7E29F57B2E00A9D8C4 /* Controllers */,
 			);
 			path = RulesViewController;
 			sourceTree = "<group>";
