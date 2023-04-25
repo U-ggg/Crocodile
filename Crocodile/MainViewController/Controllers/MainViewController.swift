@@ -99,7 +99,7 @@ class MainViewController: UIViewController {
     private func tappedRulesButton() {
         let rulesViewController = RulesViewController()
         rulesViewController.modalPresentationStyle = .fullScreen
-        self.present(rulesViewController, animated: true)
+        navigationController?.pushViewController(rulesViewController, animated: true)
     }
     @objc
     private func tappedStartButton() {
